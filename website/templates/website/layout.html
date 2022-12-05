@@ -47,15 +47,25 @@
           </div>
         </li>
       </ul>
+      {% if user.is_authenticated %}
       <ul class="navbar-text list-inline">
-        <li class="list-inline-item"><a class="nav-link" href="#"><button class="btn btn-outline-success">Login</button></a></li>
-        <li class="list-inline-item" style="margin-left:-30px;"><a class="nav-link" href="#"><button class="btn btn-outline-success">Register</button></a></li>
+        <li class="list-inline-item"><a class="nav-link" href="/logout"><button class="btn btn-outline-success">Logout</button></a></li>
       </ul>
+      {% else %}
+      <ul class="navbar-text list-inline">
+        <li class="list-inline-item"><a class="nav-link" href="/login"><button class="btn btn-outline-success">Login</button></a></li>
+        <li class="list-inline-item" style="margin-left:-30px;"><a class="nav-link" href="/register"><button class="btn btn-outline-success">Register</button></a></li>
+      </ul>
+      {% endif %}
     </div>
   </nav>
 
-  {% block body %}
+  <br>
 
-  {% endblock %}
+  <div class="container">
+    {% block body %}
+
+    {% endblock %}
+  </div>
 </body>
 </html>

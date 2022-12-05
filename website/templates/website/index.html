@@ -5,5 +5,9 @@
 {% endblock %}
 
 {% block body %}
+{% if user.is_authenticated %}
+<h1 class="text-center">Welcome back {{ user }}</h1>
+{% else %}
 <h1 class="h1">Linkr, free link sharing for everyone, forever.</h1>
+{% endif %}
 {% endblock %}
