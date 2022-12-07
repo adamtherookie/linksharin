@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .models import User
+from .models import User, Page, Category, Link, Style
 
 # Create your views here.
 
@@ -67,4 +67,19 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('index'))
 
 def view_page(request, username):
-    return render(request, f"user_page/{username}.html")
+    try:
+        page = Page.objects.get(user=username)
+    except Page.DoesNotExist:
+        page = None
+
+    if page is not None:
+        categories = Category.objects.filter(page=page)
+        links = Link.objects.filter(page=page)
+        style = Style.objects.get(page=page)
+        return render(request, "website/page.html", {
+            'categories':categories,
+            'links':links,
+            'style':style
+        })
+    else:
+        return HttpResponse("404 not found")
