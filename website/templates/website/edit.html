@@ -1,0 +1,61 @@
+{% extends 'website/layout.html' %}
+{% block title %}
+ Linkr | Edit
+{% endblock %}
+
+{% block body %}
+<br>
+<h1 class="text-center">Editing {{ user }}'s page:</h1>
+
+<br>
+
+<div class="row align-items-start">
+  <div class="col has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
+    <form action="/edit" method="post">
+      {% csrf_token %}
+      <h3>Page Content:</h3>
+      <hr>
+      <textarea rows="10" cols="10" class="form-control" id="content" name="content">
+
+      </textarea>
+      <br>
+      <h3>Page Style:</h3>
+      <hr>
+      <textarea rows="10" cols="10" class="form-control" id="css" name="css">
+
+      </textarea>
+      <br>
+      <input type="submit" value="Edit" class="btn btn-block btn-outline-primary">
+    </form>
+  </div>
+  <div class="col-3">
+    <button class="btn btn-outline-primary" onclick="add_cat()">Add Category</button>
+    <button class="btn btn-outline-primary" onclick="add_link()">Add Link</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#content').value = '';
+  document.querySelector('#css').value = '';
+  {% for category in categories %}
+    document.querySelector('#content').value += '# {{ category.name }}\n';
+    {% for link in links %}
+      {% if link.category == category %}
+        document.querySelector('#content').value += '[{{ link.name }}]({{ link.url }})\n';
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  document.querySelector('#css').value += '{{ style.css }}';
+})
+
+var add_cat = function() {
+  document.querySelector('#content').value += '# Category Name\n';
+}
+
+var add_link = function() {
+  document.querySelector('#content').value += '[Link Name](Link URL)\n';
+}
+</script>
+
+{% endblock %}

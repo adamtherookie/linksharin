@@ -15,7 +15,7 @@
       <div class="category_title">{{ category.name }}</div>
       {% for link in links %}
         {% if link.category == category %}
-          <a href="{{ link.url }}">{{ link.name }}</a>
+          <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
         {% endif %}
       {% endfor %}
     </div>

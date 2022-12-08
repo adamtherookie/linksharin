@@ -5,47 +5,51 @@ Linkr | Login
 {% endblock %}
 
 {% block body %}
-{% if register %}
-<h1>Register</h1>
-
-{% if message %}
-<div class="alert alert-danger">{{ message }}</div>
-{% endif %}
-
-<form action="/register" method="post">
-  {% csrf_token %}
-  <div class="form-group">
-    <input autofocus class="form-control" type="email" name="email" placeholder="Email address" required>
+<div class="container row align-items-center" style="height:90vh;">
+  <div class="jumbotron col background-white has-shadow">
+    {% if register %}
+    <h1>Register</h1>
+    
+    {% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endif %}
+    
+    <form action="/register" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input autofocus class="form-control" type="email" name="email" placeholder="Email address" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="username" name="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
+      </div>
+      <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+    {% else %}
+    <h1>Login</h1>
+    
+    {% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endif %}
+    
+    <form action="/login" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input autofocus class="form-control" type="text" name="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Password" required>
+      </div>
+      <input class="btn btn-primary" type="submit" value="Log in">
+    </form>
+    <br>
+    <p>Don't have an account? Register <a href="/register">here</a>.</p>
+    {% endif %}
   </div>
-  <div class="form-group">
-    <input class="form-control" type="username" name="username" placeholder="Username" required>
-  </div>
-  <div class="form-group">
-    <input class="form-control" type="password" name="password" placeholder="Password" required>
-  </div>
-  <div class="form-group">
-    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
-  </div>
-  <input class="btn btn-primary" type="submit" value="Register">
-</form>
-{% else %}
-<h1>Login</h1>
-
-{% if message %}
-<div class="alert alert-danger">{{ message }}</div>
-{% endif %}
-
-<form action="/login" method="post">
-  {% csrf_token %}
-  <div class="form-group">
-    <input autofocus class="form-control" type="text" name="username" placeholder="Username" required>
-  </div>
-  <div class="form-group">
-    <input class="form-control" type="password" name="password" placeholder="Password" required>
-  </div>
-  <input class="btn btn-primary" type="submit" value="Log in">
-</form>
-<br>
-<p>Don't have an account? Register <a href="/register">here</a>.</p>
-{% endif %}
+</div>
 {% endblock %}

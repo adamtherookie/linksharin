@@ -7,6 +7,9 @@ from django.db import IntegrityError
 
 from .models import User, Page, Category, Link, Style
 
+import markdown
+from bs4 import BeautifulSoup
+
 # Create your views here.
 
 def index(request):
@@ -83,3 +86,52 @@ def view_page(request, username):
         })
     else:
         return HttpResponse("404 not found")
+
+@login_required
+def edit(request):
+    try:
+        page = Page.objects.get(user=request.user)
+    except Page.DoesNotExist:
+        page = None
+
+    if page is not None:
+        categories = Category.objects.filter(page=page)
+        links = Link.objects.filter(page=page)
+        style = Style.objects.get(page=page)
+
+    if request.method == "GET":
+        return render(request, "website/edit.html", {
+            'categories':categories,
+            'links':links,
+            'style':style
+        })
+    else:
+        content = request.POST['content']
+        css = request.POST['css']
+
+        # Delete all records with user
+        Category.objects.filter(page=page).delete()
+        Link.objects.filter(page=page).delete()
+        Style.objects.get(page=page).delete()
+
+        # Re-create style because it's the easiest
+        style = Style(page=page, css=css)
+        style.save()
+
+        # Parse the md (convert to html first then use beautiful soup to get what we need)
+        html = markdown.markdown(content)
+        soup = BeautifulSoup(html, "html.parser")
+
+        categories = soup.find_all("h1")
+        for category in categories:
+            cat = Category(name=category.text, page=page)
+            cat.save()
+
+            for sib in category.find_next_siblings():
+                if sib.name == "h1":
+                    break
+                elif sib.name == "a":
+                    link = Link(name=sib.text, url=sib['href'], category=cat, page=page)
+                    link.save()
+        
+        return HttpResponseRedirect("/")

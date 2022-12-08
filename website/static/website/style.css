@@ -1,3 +1,12 @@
 * {
-  transition:0.3;
+  transition:0.3s;
+}
+
+.has-shadow, button:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.background-white {
+  background-color:white; 
+  border:1px solid #eeeeee;
 }

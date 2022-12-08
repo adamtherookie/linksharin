@@ -9,6 +9,20 @@
 <h1 class="text-center">Welcome back {{ user }}</h1>
 <p class="text-center">Check out your page <a href="/@/{{ user }}" target="_blank">here</a>.</p>
 {% else %}
-<h1 class="h1">Linkr, free link sharing for everyone, forever.</h1>
+<br><br>
+<div class="container row align-items-center" style="height:80vh;">
+  <div class="background-white col jumbotron has-shadow">
+    <h1 class="display-4">Howdy!</h1>
+    <p>Linkr: free and open source link sharing for everyone, forever.</p>
+    <p>
+      <a class="btn btn-outline-primary btn-large" href="/login1">
+        Log In
+      </a> 
+      <a class="btn btn-outline-primary btn-large" href="/register">
+        Sign Up
+      </a>
+    </p>
+  </div>
+</div>
 {% endif %}
 {% endblock %}
