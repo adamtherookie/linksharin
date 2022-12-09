@@ -8,14 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'website/default.css' %}">
   
-  <title>{{ user }} | Linkr</title>
+  <title>{{ username }} | Linkr</title>
   <style>
     {{ style.css }}
   </style>
 </head>
 <body>
   <br><br>
-  <h1>{{ user }}</h1>
+  <h1>{{ username }}</h1>
+  <div class="user-bio-container">
+    <p class="user-bio">
+      {{ bio }}
+    </p>
+  </div>
   {% for category in categories %}
     <div class="category">
       <div class="category-title">{{ category.name }}</div>

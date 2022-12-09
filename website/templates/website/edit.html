@@ -13,6 +13,12 @@
   <div class="col has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
     <form action="/edit" method="post">
       {% csrf_token %}
+      <h3>Bio:</h3>
+      <hr>
+      <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
+
+      </textarea>
+      <br>
       <h3>Page Content:</h3>
       <hr>
       <textarea rows="10" cols="10" class="form-control" id="content" name="content">
@@ -38,6 +44,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#content').value = '';
   document.querySelector('#css').value = '';
+  document.querySelector('#bio').value = '';
   {% for category in categories %}
     document.querySelector('#content').value += '# {{ category.name }}\n';
     {% for link in links %}
@@ -47,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endfor %}
   {% endfor %}
   document.querySelector('#css').value += '{{ style.css }}';
+  document.querySelector('#bio').value += '{{ bio }}';
 })
 
 var add_cat = function() {

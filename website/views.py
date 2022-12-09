@@ -82,7 +82,9 @@ def view_page(request, username):
         return render(request, "website/page.html", {
             'categories':categories,
             'links':links,
-            'style':style
+            'style':style,
+            'username':username,
+            'bio':page.bio
         })
     else:
         return HttpResponse("404 not found")
@@ -103,11 +105,13 @@ def edit(request):
         return render(request, "website/edit.html", {
             'categories':categories,
             'links':links,
-            'style':style
+            'style':style,
+            'bio':page.bio
         })
     else:
         content = request.POST['content']
         css = request.POST['css']
+        bio = request.POST['bio']
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -130,5 +134,8 @@ def edit(request):
             for child in category.find_next_sibling().findChildren():
                 link = Link(name=child.text, url=child.get('href'), category=cat, page=page)
                 link.save()
+        
+        page.bio = bio
+        page.save(update_fields=["bio"])
             
         return HttpResponseRedirect("/")
