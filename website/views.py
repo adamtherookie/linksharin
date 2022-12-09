@@ -127,11 +127,16 @@ def edit(request):
             cat = Category(name=category.text, page=page)
             cat.save()
 
-            for sib in category.find_next_siblings():
+            print(soup.find_all("p"))
+
+            for sib in soup.find_all("p")[0].findChildren():
                 if sib.name == "h1":
                     break
-                elif sib.name == "a":
-                    link = Link(name=sib.text, url=sib['href'], category=cat, page=page)
+                else:
+                    print(f'name: {sib.text}')
+                    print(f'url: {sib.get("href")}')
+                    print(f'tag: {sib}')
+                    link = Link(name=sib.text, url=sib.get('href'), category=cat, page=page)
                     link.save()
-        
+            
         return HttpResponseRedirect("/")
