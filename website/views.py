@@ -44,6 +44,13 @@ def register(request):
             })
         
         login(request, user)
+
+        # Create user's page
+        page = Page(user=user)
+        page.save()
+        style = Style(page=page)
+        style.save()
+
         return HttpResponseRedirect(reverse('index'))
 
 def login_view(request):
