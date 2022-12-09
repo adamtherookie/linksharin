@@ -15,7 +15,7 @@
 </head>
 <body>
   <br><br>
-  <h1>{{ username }}</h1>
+  <strong><p class="user-title">{{ username }}</p></strong>
   <div class="user-bio-container">
     <p class="user-bio">
       {{ bio }}
@@ -37,5 +37,13 @@
       <br>
     </div>
   {% endfor %}
+
+  <br><br>
+
+  {% if watermark == True %}
+  <div class="page-footer">
+    <a href="/" class="footer-text">Made with Linkr</a>
+  </div>
+  {% endif %}
 </body>
 </html>

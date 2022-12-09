@@ -91,7 +91,8 @@ def view_page(request, username):
             'links':links,
             'style':style,
             'username':username,
-            'bio':page.bio
+            'bio':page.bio,
+            'watermark':page.watermark
         })
     else:
         return HttpResponse("404 not found")
@@ -113,12 +114,14 @@ def edit(request):
             'categories':categories,
             'links':links,
             'style':style,
-            'bio':page.bio
+            'bio':page.bio,
+            'watermark':page.watermark
         })
     else:
         content = request.POST['content']
         css = request.POST['css']
         bio = request.POST['bio']
+        watermark = request.POST.get('checkbox', False)
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -144,5 +147,8 @@ def edit(request):
         
         page.bio = bio
         page.save(update_fields=["bio"])
+
+        page.watermark = True if watermark else False
+        page.save(update_fields=["watermark"])
             
         return HttpResponseRedirect("/")

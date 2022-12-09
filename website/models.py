@@ -7,6 +7,7 @@ class User(AbstractUser):
 class Page(models.Model):
   user = models.CharField(max_length=600)
   bio = models.CharField(max_length=10000)
+  watermark = models.BooleanField(default=True)
 
   def __str__(self):
     return f"{self.user}'s page"

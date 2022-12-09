@@ -10,12 +10,13 @@ a {
   text-decoration:none;
 }
 
-h1 {
-  font-weight: bolder;
+.user-title {
+  font-weight:900;
+  font-size:larger;
 }
 
 .user-bio {
-  font-size:large;
+  font-size:medium;
   padding:10px;
 }
 
@@ -31,7 +32,7 @@ body {
 
 .category-title {
   font-weight: bold;
-  font-size: larger;
+  font-size: large;
 }
 
 .link-container {
@@ -53,4 +54,15 @@ body {
     margin-left:15vw;
     margin-right:15vw;
   }
+}
+
+.page-footer {
+  border-top:1px solid white;
+  padding:20px;
+  
+}
+
+.footer-text {
+  color:#dddddd;
+  font-size:small;
 }
