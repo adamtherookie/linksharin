@@ -109,14 +109,14 @@ def edit(request):
         content = request.POST['content']
         css = request.POST['css']
 
+        if css is not None:
+            Style.objects.get(page=page).delete()
+            style = Style(page=page, css=css)
+            style.save()
+
         # Delete all records with user
         Category.objects.filter(page=page).delete()
         Link.objects.filter(page=page).delete()
-        Style.objects.get(page=page).delete()
-
-        # Re-create style because it's the easiest
-        style = Style(page=page, css=css)
-        style.save()
 
         # Parse the md (convert to html first then use beautiful soup to get what we need)
         html = markdown.markdown(content)
@@ -127,16 +127,8 @@ def edit(request):
             cat = Category(name=category.text, page=page)
             cat.save()
 
-            print(soup.find_all("p"))
-
-            for sib in soup.find_all("p")[0].findChildren():
-                if sib.name == "h1":
-                    break
-                else:
-                    print(f'name: {sib.text}')
-                    print(f'url: {sib.get("href")}')
-                    print(f'tag: {sib}')
-                    link = Link(name=sib.text, url=sib.get('href'), category=cat, page=page)
-                    link.save()
+            for child in category.find_next_sibling().findChildren():
+                link = Link(name=child.text, url=child.get('href'), category=cat, page=page)
+                link.save()
             
         return HttpResponseRedirect("/")
