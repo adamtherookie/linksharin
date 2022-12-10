@@ -3,16 +3,18 @@
   <h2>Free and Open Source Link Sharing</h2>
 </div>
 
-Linkr is currently (temporarily) live at [Python Anywhere](https://adamtherookie.pythonanywhere.com).
+Linksharin' is currently (temporarily) live at [Python Anywhere](https://adamtherookie.pythonanywhere.com).
 
-## What is Linkr
-Linkr is a link sharer, meaning you have one link (your Linkr) that you post on your social media profiles which then contains all the other links you have: personal websites, stores, content...
+## What is linksharin'?
+Linksharin' is a link sharer (surprise!). It gives you a unique link which you can then post on your social media profiles which then contains all the other links you would like your audience to see: personal websites, stores, content...
 
 ## Running locally
 If you want to host an instance of Linkr on your own server, or test it locally, you can clone the git repo
-`git clone https://github.com/adamtherookie/linkr` and start the server after changing into the root directory of the project `python manage.py runserver`.
+`git clone https://github.com/adamtherookie/linksharin`.
+Then you must set up the sqlite3 database: `python manage.py makemigrations && python manage.py migrate`.
+After that you can run the server: `python manage.py runserver`
 
-Requires python and the Django, Beautiful Soup, and markdown modules.
+Requires sqlite3, python and the Django, Beautiful Soup, and markdown modules.
 
 ## Contributing
-Any contributions fixing issues or adding new features are greatly appreciated.
+Any contributions fixing issues or adding new features are greatly appreciated. A good place to start would be adding colorschemes and effects.
