@@ -10,6 +10,7 @@ class Page(models.Model):
   bio = models.CharField(max_length=10000)
   watermark = models.BooleanField(default=True)
   views = models.IntegerField(default=0)
+  colorscheme = models.CharField(max_length=1000, default='default')
 
   def __str__(self):
     return f"{self.user}'s page"
@@ -36,3 +37,11 @@ class Style(models.Model):
 
   def __str__(self):
     return f"Stylesheet {self.css} on {self.page}"
+
+class Colorscheme(models.Model):
+  # This is just to keep track of the colorschemes we have.
+  # Only admins will be able to add them through the admin portal
+  name = models.CharField(max_length=100)
+
+  def __str__(self):
+    return f"Colorscheme {self.name}"

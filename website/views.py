@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .models import User, Page, Category, Link, Style
+from .models import User, Page, Category, Link, Style, Colorscheme
 
 import markdown
 from bs4 import BeautifulSoup
@@ -104,7 +104,8 @@ def view_page(request, username):
             'username':username,
             'bio':page.bio,
             'watermark':page.watermark,
-            'image':page.pic
+            'image':page.pic,
+            'colorscheme':page.colorscheme
         })
     else:
         return HttpResponse("404 not found")
@@ -120,6 +121,7 @@ def edit(request):
         categories = Category.objects.filter(page=page)
         links = Link.objects.filter(page=page)
         style = Style.objects.get(page=page)
+        colorschemes = Colorscheme.objects.all()
 
     if request.method == "GET":
         return render(request, "website/edit.html", {
@@ -128,7 +130,9 @@ def edit(request):
             'style':style,
             'bio':page.bio,
             'watermark':page.watermark,
-            'image':page.pic
+            'image':page.pic,
+            'user_colorscheme':page.colorscheme,
+            'colorschemes':colorschemes
         })
     else:
         content = request.POST['content']
@@ -136,6 +140,7 @@ def edit(request):
         bio = request.POST['bio']
         watermark = request.POST.get('checkbox', False)
         image = request.FILES.get("image", None)
+        colorscheme = request.POST['colorscheme']
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -168,5 +173,8 @@ def edit(request):
         if image is not None: 
             page.pic = image
             page.save(update_fields=["pic"])
+
+        page.colorscheme = colorscheme
+        page.save(update_fields=["colorscheme"])
 
         return HttpResponseRedirect("/")
