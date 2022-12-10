@@ -13,7 +13,14 @@ from bs4 import BeautifulSoup
 # Create your views here.
 
 def index(request):
-    return render(request, "website/index.html")
+    if request.user.is_authenticated:
+        page = Page.objects.get(user=request.user)
+
+        return render(request, "website/index.html", {
+            'views':page.views
+        })
+    else:
+        return render(request, "website/index.html")
 
 def register(request):
     if request.method == "GET":
@@ -86,13 +93,18 @@ def view_page(request, username):
         categories = Category.objects.filter(page=page)
         links = Link.objects.filter(page=page)
         style = Style.objects.get(page=page)
+
+        page.views += 1
+        page.save(update_fields=["views"])
+
         return render(request, "website/page.html", {
             'categories':categories,
             'links':links,
             'style':style,
             'username':username,
             'bio':page.bio,
-            'watermark':page.watermark
+            'watermark':page.watermark,
+            'image':page.pic
         })
     else:
         return HttpResponse("404 not found")
@@ -115,13 +127,15 @@ def edit(request):
             'links':links,
             'style':style,
             'bio':page.bio,
-            'watermark':page.watermark
+            'watermark':page.watermark,
+            'image':page.pic
         })
     else:
         content = request.POST['content']
         css = request.POST['css']
         bio = request.POST['bio']
         watermark = request.POST.get('checkbox', False)
+        image = request.FILES.get("image", None)
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -150,5 +164,9 @@ def edit(request):
 
         page.watermark = True if watermark else False
         page.save(update_fields=["watermark"])
-            
+
+        if image is not None: 
+            page.pic = image
+            page.save(update_fields=["pic"])
+
         return HttpResponseRedirect("/")

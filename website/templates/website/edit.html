@@ -11,13 +11,18 @@
 
 <div class="row align-items-start">
   <div class="col has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
-    <form action="/edit" method="post">
+    <form action="/edit" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <h3>Bio:</h3>
       <hr>
       <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
 
       </textarea>
+      <br>
+      <h3>Change Profile Picture:</h3>
+      <h6>Leave empty to do nothing</h6>
+      <hr>
+      <input class="form-control" type="file" name="image" id="image">
       <br>
       <h3>Page Content:</h3>
       <hr>

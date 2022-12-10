@@ -6,8 +6,10 @@ class User(AbstractUser):
 
 class Page(models.Model):
   user = models.CharField(max_length=600)
+  pic = models.ImageField(upload_to='images', default='images/default.png')
   bio = models.CharField(max_length=10000)
   watermark = models.BooleanField(default=True)
+  views = models.IntegerField(default=0)
 
   def __str__(self):
     return f"{self.user}'s page"
