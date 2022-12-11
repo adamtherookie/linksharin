@@ -8,7 +8,7 @@ Linksharin' | Login
 <div class="container row align-items-center" style="height:90vh;">
   <div class="jumbotron col background-white has-shadow">
     {% if register %}
-    <h1>Register</h1>
+    <h1 class="header">Register<span class="accent">.</span></h1>
     
     {% if message %}
     <div class="alert alert-danger">{{ message }}</div>
@@ -31,7 +31,7 @@ Linksharin' | Login
       <input class="btn btn-primary" type="submit" value="Register">
     </form>
     {% else %}
-    <h1>Login</h1>
+    <h1 class="header">Login<span class="accent">.</span></h1>
     
     {% if message %}
     <div class="alert alert-danger">{{ message }}</div>

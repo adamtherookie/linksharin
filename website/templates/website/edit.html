@@ -5,59 +5,72 @@
 
 {% block body %}
 <br>
-<h1 class="text-center">Editing {{ user }}'s page:</h1>
+<h1 class="text-center header">Editing {{ user }}'s page<span class="accent">:</span></h1>
 
 <br>
 
-<div class="row align-items-start">
-  <div class="col has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
-    <form action="/edit" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <h3>Bio:</h3>
-      <hr>
-      <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
+<div class="has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
+  <form action="/edit" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3 class="header">Bio<span class="accent">:</span></h3>
+    <hr>
+    <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
 
-      </textarea>
-      <br>
-      <h3>Change Profile Picture:</h3>
-      <h6>Leave empty to do nothing</h6>
-      <hr>
-      <input class="form-control" type="file" name="image" id="image">
-      <br>
-      <h3>Page Content:</h3>
-      <hr>
-      <textarea rows="10" cols="10" class="form-control" id="content" name="content">
-
-      </textarea>
-      <br>
-      <h3>Color Scheme</h3>
-      <h6>Choose one here or create your own below.</h6>
-      <hr>
-      <select name="colorscheme" id="colorscheme" class="form-control">
-        {% for colorscheme in colorschemes %}
-          <option id="{{ colorscheme.name }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
-        {% endfor %}
-      </select>
-      <br>
-      <h3>Page Style:</h3>
-      <hr>
-      <textarea rows="10" cols="10" class="form-control" id="css" name="css">
-
-      </textarea>
-      <br>
-
-      <div class="form-group">
-        Enable watermark?
-        <input type="checkbox" id="checkbox" name="checkbox" {% if watermark %} checked {% endif %}>
+    </textarea>
+    <br>
+    <h3 class="header">Change Profile Picture<span class="accent">:</span></h3>
+    <h6>Leave empty to do nothing</h6>
+    <hr>
+    <input class="form-control" type="file" name="image" id="image">
+    <br>
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="header">Page Content<span class="accent">:</span></h3>
+        <hr>
+        <textarea rows="10" cols="10" class="form-control" id="content" name="content">
+    
+        </textarea>
       </div>
+      <div class="col-3">
+        <button class="btn btn-outline-primary" onclick="add_cat()">Add Category</button>
+        <button class="btn btn-outline-primary" onclick="add_link()">Add Link</button>
+      </div>
+    </div>
+    <br>
+    <h3 class="header">Color Scheme<span class="accent">:</span></h3>
+    <h6>Choose one here or create your own below.</h6>
+    <hr>
+    <select name="colorscheme" id="colorscheme" class="form-control">
+      {% for colorscheme in colorschemes %}
+        <option id="{{ colorscheme.name }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <h3 class="header">Page Style<span class="accent">:</span></h3>
+    <h6>You can edit the page using CSS below. Here are the classes used:</h6>
+    <ul>
+      <li>.user-title: the username at the top of the page.</li>
+      <li>.user-bio-container: contains the bio of the user.</li>
+      <li>.user-bio: the actual text of the bio.</li>
+      <li>.category: a container for each category (including links).</li>
+      <li>.category-title: the title of each category.</li>
+      <li>.link-container: contains the links, including backgrounds and text.</li>
+      <li>.page-footer: if the watermark is enabled, the container of the footer.</li>
+      <li>.footer-text: if the watermark is enabled, the actual text of the footer.</li>
+    </ul>
+    <hr>
+    <textarea rows="10" cols="10" class="form-control" id="css" name="css">
 
-      <input type="submit" value="Edit" class="btn btn-block btn-outline-primary">
-    </form>
-  </div>
-  <div class="col-3">
-    <button class="btn btn-outline-primary" onclick="add_cat()">Add Category</button>
-    <button class="btn btn-outline-primary" onclick="add_link()">Add Link</button>
-  </div>
+    </textarea>
+    <br>
+
+    <div class="form-group">
+      Enable watermark?
+      <input type="checkbox" id="checkbox" name="checkbox" {% if watermark %} checked {% endif %}>
+    </div>
+
+    <input type="submit" value="Edit" class="btn btn-block btn-outline-primary">
+  </form>
 </div>
 
 <script>

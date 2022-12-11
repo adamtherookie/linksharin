@@ -29,7 +29,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="border-bottom:1px solid #eeeeee">
-    <a class="navbar-brand" href="#"><img src="{% static 'website/logo.png' %}" height=25></a>
+    <a class="navbar-brand" href="/"><img src="{% static 'website/logo.png' %}" height=25></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,9 +40,9 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="/edit">Edit Page</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/edit">Edit Page</a>
+          </li>
         {% endif %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +83,7 @@
       <p class="col-md-4 mb-0 text-muted">Made with <i class="fa fa-heart"></i>, <i class="fa fa-coffee"></i>, and open source.</p>
   
       <ul class="nav col-md-4 justify-content-center">
-        <li class="nav-item"><a class="nav-link px-2 text-muted" href="https://github.com/adamtherookie/linkr"><i class="fa-brands fa-github"></i></a></li>
+        <li class="nav-item"><a class="nav-link px-2 text-muted" href="https://github.com/adamtherookie/linksharin"><i class="fa-brands fa-github"></i></a></li>
         <li class="nav-item"><a class="nav-link px-2 text-muted" href="#"><i class="fa-brands fa-discord"></i></a></li>
       </ul>
   

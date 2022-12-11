@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 * {
   transition:0.3s;
+  font-family:'Varela Round', sans-serif;
 }
 
 .has-shadow, button:hover {
@@ -9,4 +12,12 @@
 .background-white {
   background-color:white; 
   border:1px solid #eeeeee;
+}
+
+.accent {
+  color:#5d9e57;
+}
+
+.header {
+  color:#001d3d;
 }
