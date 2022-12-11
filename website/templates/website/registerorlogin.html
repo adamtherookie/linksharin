@@ -1,7 +1,7 @@
 {% extends 'website/layout.html' %}
 
 {% block title %}
-Linksharin' | Login
+Linksharin' | {% if register %} Register {% else %} Login {% endif %}
 {% endblock %}
 
 {% block body %}
