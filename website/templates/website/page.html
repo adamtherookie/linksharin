@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/static/website/colorschemes/{{ colorscheme }}.css">
   <link rel="stylesheet" href="{% static 'website/default.css' %}">
   <link rel="icon" type="image/x-icon" href="/media/{{ image }}">
-  <title>{{ username }} | Linkr</title>
+  <title>{{ username }} {% if watermark == True %} | Linksharin' {% endif %}</title>
   <style>
     {{ style.css }}
   </style>
