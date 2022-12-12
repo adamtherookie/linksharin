@@ -3,7 +3,7 @@
   <h2>Free and Open Source Link Sharing</h2>
 </div>
 
-Linksharin' is currently (temporarily) live at [Python Anywhere](https://adamtherookie.pythonanywhere.com).
+Linksharin' is currently (temporarily) live at [Python Anywhere](https://adamtherookie.pythonanywhere.com). Soon deploying to [linkshar.in](https://linkshar.in).
 
 ## What is linksharin'?
 Linksharin' is a link sharer (surprise!). It gives you a unique link which you can then post on your social media profiles which then contains all the other links you would like your audience to see: personal websites, stores, content...
