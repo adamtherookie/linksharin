@@ -5,6 +5,10 @@
   font-family:'Varela Round', sans-serif;
 }
 
+body {
+  background-color:#fbfbfb;
+}
+
 .has-shadow, button:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -12,6 +16,17 @@
 .background-white {
   background-color:white; 
   border:1px solid #eeeeee;
+  border-radius:10px;
+}
+
+.hero {
+  padding-top:50px;
+  padding-bottom:50px;
+  margin:0;
+}
+
+.jumbotron {
+  min-width:500px;
 }
 
 .accent {
