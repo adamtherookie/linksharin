@@ -6,6 +6,10 @@
 {% endblock %}
 
 {% block body %}
+<br>
+<div class="alert alert-danger" role="alert">
+  This website is still being built, so some links might be broken, and some content might be missing. However, if you find something wrong with the <em>functionality</em>, please report an <a href="https://github.com/adamtherookie/linksharin/issues" target="_blank">issue</a>.
+</div>
 {% if user.is_authenticated %}
 <br>
 <h1 class="text-center">Welcome back {{ user }}</h1>
@@ -14,16 +18,16 @@
 <h1>Analytics</h1>
 <p>Your page was viewed <strong>{{ views }}</strong> times.</p>
 {% else %}
-<br><br>
+<br>
 <div class="container row align-items-center background-white has-shadow hero">
   <div class="col jumbotron" style="background-color:white;">
     <h1 class="display-4 header">Howdy<span class="accent">!</span></h1>
     <p>Linksharin': free and open source link sharing for everyone, forever.</p>
     <p>
-      <a class="btn btn-outline-primary btn-large" href="/login">
+      <a class="btn btn-outline-primary btn-large has-shadow" href="/login">
         Log In
       </a> 
-      <a class="btn btn-outline-primary btn-large" href="/register">
+      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
         Sign Up
       </a>
     </p>
@@ -41,7 +45,7 @@
     <h1 class="display-4 header">Create a Fully Customizable Page in Minutes<span class="accent">!</span></h1>
     <p>Connect your social media, stores, websites, and more into one simple link that you can share anywhere!</p>
     <p>
-      <a class="btn btn-outline-primary btn-large" href="/register">
+      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
         Get Started
       </a> 
     </p>
@@ -53,7 +57,7 @@
     <h1 class="display-4 header">Choose from Many Color Schemes, or Create your Own<span class="accent">!</span></h1>
     <p>Browse the community-created color schemes, themes, and effects, or, if nothing suits you, you can create your own!</p>
     <p>
-      <a class="btn btn-outline-primary btn-large" href="/register">
+      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
         Get Started
       </a> 
     </p>

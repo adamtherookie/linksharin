@@ -1,0 +1,64 @@
+{% extends 'website/layout.html' %}
+
+{% block title %}
+FAQ | Linksharin'
+{% endblock %}
+
+{% block body %}
+<br><br>
+<h1 class="header">FAQs<span class="accent">:</span></h1>
+<hr>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          What is Linksharin'?
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        Linksharin' is a link sharer (surprise!). It gives you a unique link which you can then post on your social media profiles which then contains all the other links you would like your audience to see: personal websites, stores, content...
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          What does Open Source mean?
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        Linksharin' is open source. That means that the source code is available for anyone to browse, learn from, and even contribute to. Open source software makes it easier for the community to conribute to the development of the tools <em>they</em> use. Volunteers from around the world solve problems, add features, and write code together. You can see Linksharin's source code <a href="https://github.com/adamtherookie/linksharin">here</a>.
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          What does free mean?
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        Linksharin' is free, as in freedom. You not only get to use the software free of cost (free as in "free beer"), but you also get 4 more rights that "free beer" doesn't give you:
+        <ul>
+          <li>You, as the user, have the right to run the software however you would like. Meaning if you have a computer that runs it, great! If you have a phone or calculator that can run the software too, even better.</li>
+          <li>You have the right to seeing how the software actually works. This would be akin to knowing the secret ingredients in your favorite beer or soft drink. With free beer, the consumer doesn’t have that freedom.</li>
+          <li>You are also able to redistribute the software however you’d like. Whether that means you would package the software as part of your own program or simply provide a mirror so your friends can download it directly from you.</li>
+          <li>You have the right to improve the program, assuming you know how to, and submit those improvements so the public can benefit from your efforts.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

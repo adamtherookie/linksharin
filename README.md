@@ -9,7 +9,7 @@ Linksharin' is currently (temporarily) live at [Python Anywhere](https://adamthe
 Linksharin' is a link sharer (surprise!). It gives you a unique link which you can then post on your social media profiles which then contains all the other links you would like your audience to see: personal websites, stores, content...
 
 ## Running locally
-If you want to host an instance of Linkr on your own server, or test it locally, you can clone the git repo
+If you want to host an instance of Linksharin' on your own server, or test it locally, you can clone the git repo
 `git clone https://github.com/adamtherookie/linksharin`.
 Then you must set up the sqlite3 database: `python manage.py makemigrations && python manage.py migrate`.
 After that you can run the server: `python manage.py runserver`

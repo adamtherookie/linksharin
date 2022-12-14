@@ -178,3 +178,12 @@ def edit(request):
         page.save(update_fields=["colorscheme"])
 
         return HttpResponseRedirect("/")
+
+def privacy(request):
+    return render(request, "website/privacy.html")
+
+def terms(request):
+    return render(request, "website/terms.html")
+
+def faq(request):
+    return render(request, "website/faq.html")
