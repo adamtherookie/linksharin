@@ -11,6 +11,7 @@ class Page(models.Model):
   watermark = models.BooleanField(default=True)
   views = models.IntegerField(default=0)
   colorscheme = models.CharField(max_length=1000, default='default')
+  effect = models.CharField(max_length=1000, default='raise')
 
   def __str__(self):
     return f"{self.user}'s page"
@@ -45,3 +46,10 @@ class Colorscheme(models.Model):
 
   def __str__(self):
     return f"Colorscheme {self.name}"
+
+class Effect(models.Model):
+  # Same as colorschemes
+  name = models.CharField(max_length=100)
+
+  def __str__(self):
+    return f"Effect {self.name}"

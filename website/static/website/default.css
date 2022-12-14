@@ -45,7 +45,6 @@ body {
 }
 
 .link-container:hover {
-  transform: translateY(-0.25em);
   background-color:var(--link-hover-background);
   color:var(--link-hover-color);
 }

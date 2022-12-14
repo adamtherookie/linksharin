@@ -46,6 +46,15 @@
       {% endfor %}
     </select>
     <br>
+    <h3 class="header">Effects<span class="accent">:</span></h3>
+    <h6>Choose an effect here or create one below.</h6>
+    <hr>
+    <select name="effect" id="effect" class="form-control">
+      {% for effect in effects %}
+        <option id="{{ effect.name }}" value="{{ effect.name }}">{{ effect.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
     <h3 class="header">Page Style<span class="accent">:</span></h3>
     <h6>You can edit the page using CSS below. Here are the classes used:</h6>
     <ul>
@@ -89,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#css').value += '{{ style.css }}';
   document.querySelector('#bio').value += '{{ bio }}';
   document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '')
+  document.querySelector('#{{ user_effect }}').setAttribute('selected', '')
 })
 
 var add_cat = function() {

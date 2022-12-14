@@ -1,0 +1,9 @@
+.link-container {
+  /*border-radius:0px;*/
+  box-shadow: 0.3em 0.3em 0 0 rgba(0, 0, 0, 0.2), inset 0.3em 0.3em 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.link-container:hover, .link-container:focus {
+  /*border-radius:0px;*/
+  box-shadow: 0 0 0 0 var(--link-hover-background), inset 6em 3.5em 0 0 var(--link-hover-background);
+}
