@@ -52,3 +52,9 @@ body {
     text-align:center;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .jumbotron {
+    min-width:80vw;
+  }
+}
