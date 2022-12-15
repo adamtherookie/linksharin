@@ -1,2 +1,5 @@
 media
 db.sqlite3
+linker/__pycache__
+website/__pycache__
+__pycache__/
