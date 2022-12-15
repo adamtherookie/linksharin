@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./website/static/website/logo.png">
   <h2>Free and Open Source Link Sharing</h2>
-  <a href="https://www.linkshar.in">Website</a>
+  <a href="https://www.linkshar.in">Website</a> | <a href="https://discord.gg/g6ZSJdt8">Discord</a>
 </div>
 
 ## What is linksharin'?
