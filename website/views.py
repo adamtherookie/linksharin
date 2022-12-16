@@ -129,8 +129,8 @@ def edit(request):
         return render(request, "website/edit.html", {
             'categories':categories,
             'links':links,
-            'style':style,
-            'bio':page.bio,
+            'style':style.css.rstrip(),
+            'bio':page.bio.rstrip(),
             'watermark':page.watermark,
             'image':page.pic,
             'user_colorscheme':page.colorscheme,
@@ -169,7 +169,7 @@ def edit(request):
                 link = Link(name=child.text, url=child.get('href'), category=cat, page=page)
                 link.save()
         
-        page.bio = bio
+        page.bio = bio.rstrip()
         page.save(update_fields=["bio"])
 
         page.watermark = True if watermark else False
@@ -179,7 +179,7 @@ def edit(request):
             page.pic = image
             page.save(update_fields=["pic"])
 
-        page.colorscheme = colorscheme
+        page.colorscheme = colorscheme.replace(" ", "").lower()
         page.save(update_fields=["colorscheme"])
 
         page.effect = effect
