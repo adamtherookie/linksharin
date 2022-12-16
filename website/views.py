@@ -195,3 +195,6 @@ def terms(request):
 
 def faq(request):
     return render(request, "website/faq.html")
+
+def sitemap(request):
+    return render(request, "website/sitemap.txt", content_type="text")

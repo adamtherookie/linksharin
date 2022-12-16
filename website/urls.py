@@ -11,5 +11,6 @@ urlpatterns = [
     path("edit", views.edit, name="edit"),
     path("privacy", views.privacy, name="privacy"),
     path("terms", views.terms, name="terms"),
-    path("faq", views.faq, name="faq")
+    path("faq", views.faq, name="faq"),
+    path("sitemap", views.sitemap, name="sitemap")
 ]
