@@ -16,7 +16,57 @@
 <p class="text-center">Check out your page <a href="/@/{{ user }}" target="_blank">here</a>.</p>
 <br>
 <h1>Analytics</h1>
-<p>Your page was viewed <strong>{{ views }}</strong> times.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+
+<div class="row">
+  <div class="col-7">
+    <h3>Views per Day:</h3>
+    <hr>
+    <canvas id="chart" width="500px"></canvas>
+  </div>
+  <div class="col-3">
+    <h3>Other Stats</h3>
+    <hr>
+    <ul style="list-style:none;">
+      <li>Total Views: {{ total }}</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+let ctx = document.getElementById("chart").getContext("2d");
+
+let chart = new Chart(ctx, {
+  type: "line",
+  data: {
+     labels: [{% for date in dates %}"{{ date }}",{% endfor %}],
+     datasets: [
+        {
+          label: "Views",
+          backgroundColor: "#79AEC8",
+          borderColor: "#417690",
+          data: [{% for num in count %} {{ num }}, {% endfor %}]
+        }
+     ]
+  },
+  options: {
+     title: {
+        text: "Views per Day",
+        display: true
+     },
+     scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          callback: function (value) { if (Number.isInteger(value)) { return value; } },
+          stepSize:1
+        }
+      }]
+     }
+  }
+});
+</script>
+
 {% else %}
 <br>
 <div class="container row align-items-center background-white has-shadow hero w-100">

@@ -1,5 +1,6 @@
 media
 db.sqlite3
+.env
 linker/__pycache__
 website/__pycache__
 __pycache__/

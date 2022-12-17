@@ -1,5 +1,4 @@
 {% extends 'website/layout.html' %}
-{% load replace_quotes %}
 
 {% block title %}
  Linksharin' | Edit
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endfor %}
   {% endfor %}
   document.querySelector('#css').value += '{{ style }}';
-  document.querySelector('#bio').value += '{{ bio|replace_quotes }}';
+  document.querySelector('#bio').value += '{{ bio }}';
   document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '')
   document.querySelector('#{{ user_effect }}').setAttribute('selected', '')
 })

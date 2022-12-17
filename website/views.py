@@ -5,19 +5,38 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .models import User, Page, Category, Link, Style, Colorscheme, Effect
+from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View
+
+from datetime import date
 
 import markdown
 from bs4 import BeautifulSoup
 
-# Create your views here.
-
 def index(request):
     if request.user.is_authenticated:
         page = Page.objects.get(user=request.user)
+        views = View.objects.filter(page=page)
+
+        dates = [view.date for view in views]
+        count = []
+        viewed = []
+
+        for date in dates:
+            if date not in viewed:
+                n = 0
+                for i in dates:
+                    if i == date:
+                        n += 1
+                        viewed.append(i)
+
+                count.append(n)
+        
+        dates = list(set(dates))
 
         return render(request, "website/index.html", {
-            'views':page.views
+            'dates':dates,
+            'count':count,
+            'total':len(views)
         })
     else:
         return render(request, "website/index.html")
@@ -94,8 +113,8 @@ def view_page(request, username):
         links = Link.objects.filter(page=page)
         style = Style.objects.get(page=page)
 
-        page.views += 1
-        page.save(update_fields=["views"])
+        view = View(page=page, date=date.today())
+        view.save()
 
         return render(request, "website/page.html", {
             'categories':categories,
