@@ -1,5 +1,4 @@
 {% load static %}
-{% load replace_quotes %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +21,7 @@
   <strong><p class="user-title">{{ username }}</p></strong>
   <div class="user-bio-container">
     <p class="user-bio">
-      {{ bio|replace_quotes }}
+      {{ bio }}
     </p>
   </div>
   {% for category in categories %}
