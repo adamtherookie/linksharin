@@ -23,13 +23,80 @@ Linksharin' | {% if register %} Register {% else %} Login {% endif %}
         <input class="form-control" type="username" name="username" placeholder="Username" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="password" name="password" placeholder="Password" required>
+        <input class="form-control" type="password" name="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
       </div>
       <div class="form-group">
         <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
       </div>
+      <div id="message">
+
+        <h6>Password must contain the following:</h6>
+        <ul style="list-style: none;">
+          <li id="letter" class="invalid">A <b>lowercase</b> letter</li>
+          <li id="capital" class="invalid">A <b>capital (uppercase)</b> letter</li>
+          <li id="number" class="invalid">A <b>number</b></li>
+          <li id="length" class="invalid">Minimum <b>16 characters</b></li>
+        </ul>
+      </div>
       <input class="btn btn-primary" type="submit" value="Register">
     </form>
+    <br>
+    <p>Already have an account? Log in <a href="/login">here</a>.</p>
+
+    <script>
+    var password = document.getElementById("password");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length")
+
+    password.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    password.onblur = function() {
+      document.getElementById("message").style.display = "none";
+    }
+
+    password.onkeyup = function() {
+      var lowerCaseLetters = /[a-z]/g;
+      
+      if(password.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+
+      var upperCaseLetters = /[A-Z]/g;
+
+      if(password.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+      
+      var numbers = /[0-9]/g;
+
+      if(password.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+      if(password.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+    </script>
     {% else %}
     <h1 class="header">Login<span class="accent">.</span></h1>
     
@@ -52,4 +119,5 @@ Linksharin' | {% if register %} Register {% else %} Login {% endif %}
     {% endif %}
   </div>
 </div>
+<br><br>
 {% endblock %}

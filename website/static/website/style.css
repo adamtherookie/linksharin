@@ -38,7 +38,8 @@ body {
 }
 
 #main-nav {
-  background-color:rgba(255, 255, 255, 0.9);
+  background-color:rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
 }
 
 @media screen and (max-width: 1000px) {
@@ -57,4 +58,36 @@ body {
   .jumbotron {
     min-width:80vw;
   }
+}
+
+#message {
+  display:none;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+.valid {
+  color: #5d9e57;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
 }
