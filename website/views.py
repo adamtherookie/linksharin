@@ -201,7 +201,7 @@ def edit(request):
         page.colorscheme = colorscheme.replace(" ", "").lower()
         page.save(update_fields=["colorscheme"])
 
-        page.effect = effect
+        page.effect = effect.replace(" ", "").lower()
         page.save(update_fields=["effect"])
 
         return HttpResponseRedirect("/")
