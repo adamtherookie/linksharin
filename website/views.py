@@ -124,8 +124,8 @@ def view_page(request, username):
             'bio':page.bio,
             'watermark':page.watermark,
             'image':page.pic,
-            'colorscheme':page.colorscheme,
-            'effect':page.effect
+            'colorscheme':page.colorscheme.replace(" ", "").lower(),
+            'effect':page.effect.replace(" ", "").lower()
         })
     else:
         return HttpResponse("404 not found")
@@ -198,10 +198,10 @@ def edit(request):
             page.pic = image
             page.save(update_fields=["pic"])
 
-        page.colorscheme = colorscheme.replace(" ", "").lower()
+        page.colorscheme = colorscheme
         page.save(update_fields=["colorscheme"])
 
-        page.effect = effect.replace(" ", "").lower()
+        page.effect = effect
         page.save(update_fields=["effect"])
 
         return HttpResponseRedirect("/")
