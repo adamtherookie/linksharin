@@ -55,8 +55,13 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-  .jumbotron, .chart-container {
+  .jumbotron {
     min-width:80vw;
+  }
+  
+  .chart-container, .other-stats {
+    min-width:100vw;
+    background-color:red;
   }
 }
 
