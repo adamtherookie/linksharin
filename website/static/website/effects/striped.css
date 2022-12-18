@@ -1,0 +1,47 @@
+@-webkit-keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+@keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.link-container {
+  overflow: hidden;
+  position: relative;
+}
+.link-container:after {
+  content: "";
+  display: block;
+  height: 7px;
+  width: 100%;
+  background-image: repeating-linear-gradient(45deg, var(--background), var(--background) 1px, transparent 2px, transparent 5px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-top: 1px solid var(--background);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-size: 7px 7px;
+}
+
+.link-container:hover {
+  background-color: var(--background);
+  color: var(--link-hover-color);
+}
+
+.link-container:hover:after {
+  background-image: repeating-linear-gradient(45deg, var(--link-hover-color), var(--link-hover-color) 1px, transparent 2px, transparent 5px);
+  border-color:var(--link-hover-color);
+  -webkit-animation: stripe-slide 12s infinite linear forwards;
+          animation: stripe-slide 12s infinite linear forwards;
+}

@@ -1,0 +1,46 @@
+:root {
+  --link-background: rgba(0, 0, 0, 0);
+  --link-hover-background:rgba(0, 0, 0, 0);
+}
+
+.link-container {
+  letter-spacing: 0;
+  margin-top:-10px;
+  margin-bottom:-10px;
+  padding:0;
+  line-height:50px;
+}
+
+.link-container:hover,
+.link-container:active {
+  letter-spacing: 5px;
+}
+
+.link-container:after,
+.link-container:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 500ms ease-in-out;
+  width: 0;
+}
+
+.link-container:hover:after,
+.link-container:hover:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-color: var(--link-hover-color);
+  transition: width 500ms ease-in-out;
+  width: 100%;
+}
+
+.link-container:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 100%;
+}
