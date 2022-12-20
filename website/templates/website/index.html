@@ -116,5 +116,27 @@ let chart = new Chart(ctx, {
     <img src="{% static 'website/svg/colorschemes.svg' %}" class="img-fluid">
   </div>
 </div>
+<div style="text-align:center;">
+  <h1 class="header">Stats<span class="accent">:</span></h1>
+</div>
+
+<div class="container row align-items-center hero w-100" style="text-align:center;"> 
+  <div class="col stats-col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title subheader">Users<span class="accent">:</span></div>
+        <h1 class="header">{{ users }}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col stats-col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title subheader">Profiles Viewed<span class="accent">:</span></div>
+        <h1 class="header">{{ views }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
 {% endif %}
 {% endblock %}

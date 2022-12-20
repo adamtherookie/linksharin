@@ -59,3 +59,7 @@ class View(models.Model):
 
   def __str__(self):
     return f"View on {self.page} on {self.date}"
+
+class Global(models.Model):
+  # Values I would like to have access to anywhere, anytime
+  total_views = models.IntegerField(default=0)

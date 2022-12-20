@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View
+from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View, Global
 
 from datetime import date
 
@@ -39,7 +39,25 @@ def index(request):
             'total':len(views)
         })
     else:
-        return render(request, "website/index.html")
+        users = User.objects.all()
+
+        views = 0
+
+        for user in users:
+            if user != 'admin':
+                try:
+                    page = Page.objects.get(user=user)
+                    uviews = View.objects.filter(page=page)
+                    views += len(uviews)
+                except Page.DoesNotExist:
+                    page = None
+
+        uusers = len(users)
+
+        return render(request, "website/index.html", {
+            'users':uusers,
+            'views':views
+        })
 
 def register(request):
     if request.method == "GET":
