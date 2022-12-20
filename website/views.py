@@ -31,7 +31,7 @@ def index(request):
 
                 count.append(n)
         
-        dates = list(set(dates))[::-1]
+        dates = list(set(dates))
 
         return render(request, "website/index.html", {
             'dates':dates,
