@@ -43,7 +43,7 @@
     <hr>
     <select name="colorscheme" id="colorscheme" class="form-control">
       {% for colorscheme in colorschemes %}
-        <option id="{{ colorscheme.name }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
+        <option id="{{ colorscheme.name|cut:' ' }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
       {% endfor %}
     </select>
     <br>
@@ -61,7 +61,7 @@
     <hr>
     <select name="font" id="font" class="form-control">
       {% for font in fonts %}
-        <option id="{{ font.name }}" value="{{ font.name }}">{{ font.name }}</option>
+        <option id="{{ font.name|cut:' ' }}" value="{{ font.name }}">{{ font.name }}</option>
       {% endfor %}
     </select>
     <br>
