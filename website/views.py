@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View, Global
+from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View, Font
 
 from datetime import date
 
@@ -143,7 +143,8 @@ def view_page(request, username):
             'watermark':page.watermark,
             'image':page.pic,
             'colorscheme':page.colorscheme.replace(" ", "").lower(),
-            'effect':page.effect.replace(" ", "").lower()
+            'effect':page.effect.replace(" ", "").lower(),
+            'font':page.font.replace(" ", "").lower()
         })
     else:
         return HttpResponse("404 not found")
@@ -161,6 +162,7 @@ def edit(request):
         style = Style.objects.get(page=page)
         colorschemes = Colorscheme.objects.all()
         effects = Effect.objects.all()
+        fonts = Font.objects.all()
 
     if request.method == "GET":
         return render(request, "website/edit.html", {
@@ -173,7 +175,9 @@ def edit(request):
             'user_colorscheme':page.colorscheme,
             'colorschemes':colorschemes,
             'user_effect':page.effect,
-            'effects':effects
+            'effects':effects,
+            'user_font':page.font,
+            'fonts':fonts
         })
     else:
         content = request.POST['content']
@@ -183,6 +187,7 @@ def edit(request):
         image = request.FILES.get("image", None)
         colorscheme = request.POST['colorscheme']
         effect = request.POST['effect']
+        font = request.POST['font']
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -221,6 +226,11 @@ def edit(request):
 
         page.effect = effect
         page.save(update_fields=["effect"])
+
+        page.font = font
+        page.save(update_fields=["font"])
+        
+        # I know it's very inefficient to update each field on its own but I'm still debugging :/
 
         return HttpResponseRedirect("/")
 

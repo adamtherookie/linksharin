@@ -9,8 +9,9 @@ class Page(models.Model):
   pic = models.ImageField(upload_to='images', default='images/default.png')
   bio = models.CharField(max_length=10000)
   watermark = models.BooleanField(default=True)
-  colorscheme = models.CharField(max_length=1000, default='default')
-  effect = models.CharField(max_length=1000, default='raise')
+  colorscheme = models.CharField(max_length=100, default='default')
+  effect = models.CharField(max_length=100, default='raise')
+  font = models.CharField(max_length=100, default='karla')
 
   def __str__(self):
     return f"{self.user}'s page"
@@ -53,6 +54,13 @@ class Effect(models.Model):
   def __str__(self):
     return f"Effect {self.name}"
 
+class Font(models.Model):
+  # Same as colorscheme (again (:)
+  name = models.CharField(max_length=100)
+
+  def __str__(self):
+    return f"Font {self.name}"
+
 class View(models.Model):
   date = models.DateField()
   page = models.ForeignKey(Page, on_delete=models.CASCADE)
@@ -60,6 +68,3 @@ class View(models.Model):
   def __str__(self):
     return f"View on {self.page} on {self.date}"
 
-class Global(models.Model):
-  # Values I would like to have access to anywhere, anytime
-  total_views = models.IntegerField(default=0)

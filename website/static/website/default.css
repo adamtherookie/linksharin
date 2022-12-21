@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
-
 * {
-  font-family:'Karla', sans-serif;
+  font-family:var(--font);
   transition:0.3s;
 }
 

@@ -47,12 +47,21 @@
       {% endfor %}
     </select>
     <br>
-    <h3 class="gradient header">Effects<span class="accent">:</span></h3>
+    <h3 class="gradient header">Effect<span class="accent">:</span></h3>
     <h6>Choose an effect here or create one below.</h6>
     <hr>
     <select name="effect" id="effect" class="form-control">
       {% for effect in effects %}
         <option id="{{ effect.name }}" value="{{ effect.name }}">{{ effect.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <h3 class="gradient header">Font<span class="accent">:</span></h3>
+    <h6>Choose a font here or create one below.</h6>
+    <hr>
+    <select name="font" id="font" class="form-control">
+      {% for font in fonts %}
+        <option id="{{ font.name }}" value="{{ font.name }}">{{ font.name }}</option>
       {% endfor %}
     </select>
     <br>
@@ -97,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '');
   document.querySelector('#{{ user_effect }}').setAttribute('selected', '');
+  document.querySelector('#{{ user_font }}').setAttribute('selected', '');
 })
 
 var add_cat = function() {
