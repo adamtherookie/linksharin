@@ -52,7 +52,7 @@
     <hr>
     <select name="effect" id="effect" class="form-control">
       {% for effect in effects %}
-        <option id="{{ effect.name }}" value="{{ effect.name }}">{{ effect.name }}</option>
+        <option id="{{ effect.name|cut:' ' }}" value="{{ effect.name }}">{{ effect.name }}</option>
       {% endfor %}
     </select>
     <br>
