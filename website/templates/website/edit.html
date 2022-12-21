@@ -104,9 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endfor %}
   {% endfor %}
 
-  document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '');
-  document.querySelector('#{{ user_effect }}').setAttribute('selected', '');
-  document.querySelector('#{{ user_font }}').setAttribute('selected', '');
+  document.querySelector('#{{ user_colorscheme|cut:" " }}').setAttribute('selected', '');
+  document.querySelector('#{{ user_effect|cut:" " }}').setAttribute('selected', '');
+  document.querySelector('#{{ user_font|cut:" " }}').setAttribute('selected', '');
 })
 
 var add_cat = function() {
