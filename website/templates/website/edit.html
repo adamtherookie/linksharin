@@ -13,20 +13,20 @@
 <div class="has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
   <form action="/edit" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <h3 class="header">Bio<span class="accent">:</span></h3>
+    <h3 class="gradient header">Bio<span class="accent">:</span></h3>
     <hr>
     <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
-
+{{ bio }}
     </textarea>
     <br>
-    <h3 class="header">Change Profile Picture<span class="accent">:</span></h3>
+    <h3 class="gradient header">Change Profile Picture<span class="accent">:</span></h3>
     <h6>Leave empty to do nothing</h6>
     <hr>
     <input class="form-control" type="file" accept="image/*" name="image" id="image">
     <br>
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="header">Page Content<span class="accent">:</span></h3>
+        <h3 class="gradient header">Page Content<span class="accent">:</span></h3>
         <hr>
         <textarea rows="10" cols="10" class="form-control" id="content" name="content">
     
@@ -38,7 +38,7 @@
       </div>
     </div>
     <br>
-    <h3 class="header">Color Scheme<span class="accent">:</span></h3>
+    <h3 class="gradient header">Color Scheme<span class="accent">:</span></h3>
     <h6>Choose one here or create your own below.</h6>
     <hr>
     <select name="colorscheme" id="colorscheme" class="form-control">
@@ -47,7 +47,7 @@
       {% endfor %}
     </select>
     <br>
-    <h3 class="header">Effects<span class="accent">:</span></h3>
+    <h3 class="gradient header">Effects<span class="accent">:</span></h3>
     <h6>Choose an effect here or create one below.</h6>
     <hr>
     <select name="effect" id="effect" class="form-control">
@@ -56,7 +56,7 @@
       {% endfor %}
     </select>
     <br>
-    <h3 class="header">Page Style<span class="accent">:</span></h3>
+    <h3 class="gradient header">Page Style<span class="accent">:</span></h3>
     <h6>You can edit the page using CSS below. Here are the classes used:</h6>
     <ul>
       <li>.user-title: the username at the top of the page.</li>
@@ -70,7 +70,7 @@
     </ul>
     <hr>
     <textarea rows="10" cols="10" class="form-control" id="css" name="css">
-
+      {{ style }}
     </textarea>
     <br>
 
@@ -86,8 +86,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#content').value = '';
-  document.querySelector('#css').value = '';
-  document.querySelector('#bio').value = '';
   {% for category in categories %}
     document.querySelector('#content').value += '# {{ category.name }}\n';
     {% for link in links %}
@@ -96,10 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
       {% endif %}
     {% endfor %}
   {% endfor %}
-  document.querySelector('#css').value += '{{ style }}';
-  document.querySelector('#bio').value += '{{ bio }}';
-  document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '')
-  document.querySelector('#{{ user_effect }}').setAttribute('selected', '')
+
+  document.querySelector('#{{ user_colorscheme }}').setAttribute('selected', '');
+  document.querySelector('#{{ user_effect }}').setAttribute('selected', '');
 })
 
 var add_cat = function() {

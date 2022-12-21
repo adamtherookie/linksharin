@@ -21,7 +21,7 @@
   <strong><p class="user-title">{{ username }}</p></strong>
   <div class="user-bio-container">
     <p class="user-bio">
-      {{ bio }}
+      {{ bio|linebreaksbr }}
     </p>
   </div>
   {% for category in categories %}
