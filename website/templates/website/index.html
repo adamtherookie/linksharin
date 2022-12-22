@@ -69,15 +69,15 @@ let chart = new Chart(ctx, {
 
 {% else %}
 <br>
-<div class="container row align-items-center background-white has-shadow hero w-100">
-  <div class="col jumbotron" style="background-color:white;">
+<div class="container stats row align-items-center background-white has-shadow hero w-100">
+  <div class="col jumbotron">
     <h1 class="header">Howdy<span class="accent">!</span></h1>
     <p>Linksharin': free and open source link sharing for everyone, forever.</p>
     <p>
-      <a class="btn btn-outline-primary btn-large has-shadow" href="/login">
+      <a class="btn btn-success btn-large" href="/login">
         Log In
       </a> 
-      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
+      <a class="btn btn-success btn-large" href="/register">
         Sign Up
       </a>
     </p>
@@ -116,6 +116,8 @@ let chart = new Chart(ctx, {
     <img src="{% static 'website/svg/colorschemes.svg' %}" class="img-fluid">
   </div>
 </div>
+
+<div class="stats">
 <div style="text-align:center;">
   <h1 class="header">Stats<span class="accent">:</span></h1>
 </div>
@@ -136,6 +138,38 @@ let chart = new Chart(ctx, {
         <h1 class="header">{{ views }}</h1>
       </div>
     </div>
+  </div>
+</div>
+</div>
+
+<br><br>
+<div style="text-align:center;">
+  <h1 class="header">Made with Open Source<span class="accent">:</span></h1>
+</div>
+
+<div class="container row align-items-center hero w-100" style="text-align:center;">
+  <div class="slider">
+    <div class="slide-track">
+      <div class="slide">
+        <a href="https://getbootstrap.com/" target="_blank"><img style="height:90px;" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png"></a>
+      </div>
+      <div class="slide">
+        <a href="https://penpot.app/" target="_blank"><img style="height:90px;" src="https://avatars.githubusercontent.com/u/30179644?s=200&v=4"></a>
+      </div>
+      <div class="slide">
+        <a href="https://djangoproject.com" target="_blank"><img style="height:90px;" src="https://avatars.githubusercontent.com/u/27804?s=200&v=4"></a>
+      </div>
+      <div class="slide">
+        <a href="https://fontawesome.com" target="_blank"><img style="height:90px;" src="https://avatars.githubusercontent.com/u/1505683?s=200&v=4"></a>
+      </div>
+      <div class="slide">
+        <a href="https://chartjs.org" target="_blank"><img style="height:90px;" src="https://avatars.githubusercontent.com/u/10342521?s=200&v=4"></a>
+      </div>
+      <div class="slide">
+        <a href="https://python.org" target="_blank"><img style="height:90px" src="https://duckduckgo.com/i/4d837687.png"></a>
+      </div>
+      <!--Going to repeat (until I find more stuff to add)-->
+    </div> 
   </div>
 </div>
 {% endif %}
