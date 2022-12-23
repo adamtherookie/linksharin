@@ -246,3 +246,6 @@ def faq(request):
 
 def sitemap(request):
     return render(request, "website/sitemap.txt", content_type="text")
+
+def notfound(request, exception):
+    return render(request, "website/404.html")
