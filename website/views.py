@@ -80,7 +80,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username.lower(), email, password)
             user.save()
         except IntegrityError:
             return render(request, "website/registerorlogin.html", {
@@ -123,7 +123,7 @@ def logout_view(request):
 
 def view_page(request, username):
     try:
-        page = Page.objects.get(user=username)
+        page = Page.objects.get(user=username.lower())
     except Page.DoesNotExist:
         page = None
 
