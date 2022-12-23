@@ -7,7 +7,7 @@ from django.db import IntegrityError
 
 from .models import User, Page, Category, Link, Style, Colorscheme, Effect, View, Font
 
-from datetime import date
+from datetime import date, datetime
 
 import markdown
 from bs4 import BeautifulSoup
@@ -31,7 +31,8 @@ def index(request):
 
                 count.append(n)
         
-        dates = list(set(dates))[::-1]
+        dates = list(set(dates))
+        dates.sort()
 
         return render(request, "website/index.html", {
             'dates':dates,
