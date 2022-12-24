@@ -79,14 +79,21 @@ def register(request):
             })
 
         # Attempt to create new user
-        try:
-            user = User.objects.create_user(username.lower(), email, password)
-            user.save()
-        except IntegrityError:
-            return render(request, "website/registerorlogin.html", {
-                'register':1,
-                'message': "Username already taken."
-            })
+        for user in User.objects.all():
+            if user.username.lower() == username.lower():
+                return render(request, "website/registerorlogin.html", {
+                    'register':1,
+                    'message': "Username already taken."
+                })
+            
+            if user.email == email:
+                return render(request, "website/registerorlogin.html", {
+                    'register':1,
+                    'message': "Email already taken."
+                })
+
+        user = User.objects.create_user(username, email, password)
+        user.save()
         
         login(request, user)
 
@@ -122,10 +129,13 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('index'))
 
 def view_page(request, username):
-    try:
-        page = Page.objects.get(user=username.lower())
-    except Page.DoesNotExist:
-        page = None
+    for user in User.objects.all():
+        if user.username.lower() == username.lower():
+            username = user.username
+            page = Page.objects.get(user=user)
+            break
+        else:
+            page = None
 
     if page is not None:
         categories = Category.objects.filter(page=page)
@@ -148,7 +158,7 @@ def view_page(request, username):
             'font':page.font.replace(" ", "").lower()
         })
     else:
-        return HttpResponse("404 not found")
+        return HttpResponse("user not found")
 
 @login_required
 def edit(request):
@@ -163,7 +173,9 @@ def edit(request):
         style = Style.objects.get(page=page)
         colorschemes = Colorscheme.objects.all()
         effects = Effect.objects.all()
-        fonts = Font.objects.all()
+        fonts = Font.objects.all
+    else:
+        return HttpResponse("Oops, no page here.")
 
     if request.method == "GET":
         return render(request, "website/edit.html", {
