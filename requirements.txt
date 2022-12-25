@@ -1,3 +1,4 @@
 django
 beautifulsoup4
 markdown
+django-qr-code

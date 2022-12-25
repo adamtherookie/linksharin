@@ -35,6 +35,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 INSTALLED_APPS = [
     'website',
+    'qr_code',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,6 +71,19 @@ TEMPLATES = [
         },
     },
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'qr-code': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'qr-code-cache',
+        'TIMEOUT': 3600
+    }
+}
+
+QR_CODE_CACHE_ALIAS = 'qr-code'
 
 WSGI_APPLICATION = 'linker.wsgi.application'
 
