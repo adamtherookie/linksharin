@@ -1,0 +1,10 @@
+:root {
+  --background:#000000;
+  --text-color:#ffffff;
+  --link-background:#ff0000;
+  --link-color:#ffffff;
+  --link-hover-background:#880000;
+  --link-hover-color:#ffffff;
+  --footer-border:#ffffff;
+  --footer-text:#ffffff;
+}
