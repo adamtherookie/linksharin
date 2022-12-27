@@ -8,6 +8,7 @@ class Page(models.Model):
   user = models.CharField(max_length=600)
   pic = models.ImageField(upload_to='images', default='images/default.png')
   bio = models.CharField(max_length=10000)
+  background = models.ImageField(upload_to='images', null=True, blank=True, default=None)
   watermark = models.BooleanField(default=True)
   colorscheme = models.CharField(max_length=100, default='default')
   effect = models.CharField(max_length=100, default='raise')

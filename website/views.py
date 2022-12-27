@@ -152,6 +152,7 @@ def view_page(request, username):
             'username':username,
             'bio':page.bio,
             'watermark':page.watermark,
+            'background':page.background,
             'image':page.pic,
             'colorscheme':page.colorscheme.replace(" ", "").lower(),
             'effect':page.effect.replace(" ", "").lower(),
@@ -185,6 +186,7 @@ def edit(request):
             'bio':page.bio.rstrip(),
             'watermark':page.watermark,
             'image':page.pic,
+            'background':page.background,
             'user_colorscheme':page.colorscheme,
             'colorschemes':colorschemes,
             'user_effect':page.effect,
@@ -198,6 +200,7 @@ def edit(request):
         bio = request.POST['bio']
         watermark = request.POST.get('checkbox', False)
         image = request.FILES.get("image", None)
+        background = request.FILES.get("background", None)
         colorscheme = request.POST['colorscheme']
         effect = request.POST['effect']
         font = request.POST['font']
@@ -233,6 +236,10 @@ def edit(request):
         if image is not None: 
             page.pic = image
             page.save(update_fields=["pic"])
+        
+        if background is not None:
+            page.background = background
+            page.save(update_fields=["background"])
 
         page.colorscheme = colorscheme
         page.save(update_fields=["colorscheme"])

@@ -21,7 +21,6 @@ a {
 body {
   max-width:100vw;
   overflow-x:hidden;
-  background-color:var(--background);
   color:var(--text-color);
   text-align:center;
   margin-left:30vw;

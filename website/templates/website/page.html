@@ -13,6 +13,18 @@
   <link rel="icon" type="image/x-icon" href="/media/{{ image }}">
   <title>{{ username }} {% if watermark == True %} | Linksharin' {% endif %}</title>
   <style>
+    html {
+      {% if background %}
+        background: url("/media/{{ background }}") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        min-height:100vh;
+      {% else %}
+        background-color:var(--background);
+      {% endif %}
+    }
     {{ style.css }}
   </style>
 </head>
