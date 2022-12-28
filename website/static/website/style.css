@@ -23,13 +23,6 @@ body {
   border-radius:10px;
 }
 
-.hero {
-  padding-top:50px;
-  padding-bottom:50px;
-  margin:0;
-}
-
-
 .accent {
   font-family:'Roboto', sans-serif;
   color:#5d9e57;
@@ -55,11 +48,7 @@ body {
 
 #main-nav {
   background-color:rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(50px);
-}
-
-.card p {
-  font-size:larger;
+  backdrop-filter: blur(25px);
 }
 
 @media screen and (max-width: 1000px) {
@@ -75,17 +64,8 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-  .jumbotron {
-    min-width:80vw;
-  }
-  
   .chart-container, .other-stats {
     min-width:100vw;
-  }
-
-  .stats-col {
-    min-width:80vw;
-    margin-bottom:5px;
   }
 
   .header {
@@ -130,8 +110,6 @@ body {
 }
 
 .stats {
-  padding-top:50px;
-  padding-bottom:50px;
   background: linear-gradient(to bottom right, #5d9e57 0%, #001d3d 100%);
   border-radius:10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -144,11 +122,6 @@ body {
 
 .stats .card {
   background-color:rgba(0, 0, 0, 0.3);
-}
-
-.stats .jumbotron {
-  background-color:rgba(0, 0, 0, 0);
-  color:white;
 }
 
 @keyframes scroll {

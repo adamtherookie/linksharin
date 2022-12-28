@@ -8,7 +8,7 @@
 
 {% block body %}
 <br>
-<div class="alert alert-danger" role="alert">
+<div class="notification is-danger" role="alert">
   This website is still being built, so some links might be broken, and some content might be missing. However, if you find something wrong with the <em>functionality</em>, please report an <a href="https://github.com/adamtherookie/linksharin/issues" target="_blank">issue</a>.
 </div>
 {% if user.is_authenticated %}
@@ -79,92 +79,102 @@ let chart = new Chart(ctx, {
 
 {% else %}
 <br>
-<div class="container stats row align-items-center background-white has-shadow hero w-100">
-  <div class="col jumbotron">
-    <h1 class="header">Howdy<span class="accent">!</span></h1>
-    <p>Linksharin': free and open source link sharing for everyone, forever.</p>
-    <p>
-      <a class="btn btn-success btn-large" href="/login">
-        Log In
-      </a> 
-      <a class="btn btn-success btn-large" href="/register">
-        Sign Up
-      </a>
-    </p>
-  </div>
-  <div class="col">
-    <img src="{% static 'website/svg/hero.svg' %}" class="img-fluid">
-  </div>
-</div>
-
-<div class="container row align-items-center hero w-100">
-  <div class="col">
-    <img src="{% static 'website/svg/customize.svg' %}" class="img-fluid">
-  </div>
-  <div class="col jumbotron" style="background-color:white;">
-    <h1 class="header">Create a Fully Customizable Page in Minutes<span class="accent">!</span></h1>
-    <p>Connect your social media, stores, websites, and more into one simple link that you can share anywhere!</p>
-    <p>
-      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
-        Get Started
-      </a> 
-    </p>
+<div class="container stats hero">
+  <div class="columns">
+    <div class="column">
+      <h1 class="header">Howdy<span class="accent">!</span></h1>
+      <p>Linksharin': free and open source link sharing for everyone, forever.</p>
+      <p>
+        <a class="btn btn-success btn-large" href="/login">
+          Log In
+        </a> 
+        <a class="btn btn-success btn-large" href="/register">
+          Sign Up
+        </a>
+      </p>
+    </div>
+    <div class="column">
+      <img src="{% static 'website/svg/hero.svg' %}" class="img-fluid">
+    </div>
   </div>
 </div>
 
-<div class="container row align-items-center hero w-100">
-  <div class="col jumbotron" style="background-color:white;">
-    <h1 class="header">Choose from Many Color Schemes, or Create your Own<span class="accent">!</span></h1>
-    <p>Browse the community-created color schemes, themes, and effects, or, if nothing suits you, you can create your own!</p>
-    <p>
-      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
-        Get Started
-      </a> 
-    </p>
-  </div>
-  <div class="col">
-    <img src="{% static 'website/svg/colorschemes.svg' %}" class="img-fluid">
+<div class="container hero">
+  <div class="columns">
+    <div class="column">
+      <img src="{% static 'website/svg/customize.svg' %}" class="img-fluid">
+    </div>
+    <div class="column">
+      <h1 class="header">Create a Fully Customizable Page in Minutes<span class="accent">!</span></h1>
+      <p>Connect your social media, stores, websites, and more into one simple link that you can share anywhere!</p>
+      <p>
+        <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
+          Get Started
+        </a> 
+      </p>
+    </div>
   </div>
 </div>
 
-<div class="container row align-items-center hero w-100">
-  <div class="col">
-    <img src="{% static 'website/svg/cloud.svg' %}" class="img-fluid">
+<div class="container hero">
+  <div class="columns">
+    <div class="column">
+      <h1 class="header">Choose from Many Color Schemes, or Create your Own<span class="accent">!</span></h1>
+      <p>Browse the community-created color schemes, themes, and effects, or, if nothing suits you, you can create your own!</p>
+      <p>
+        <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
+          Get Started
+        </a> 
+      </p>
+    </div>
+    <div class="column">
+      <img src="{% static 'website/svg/colorschemes.svg' %}" class="img-fluid">
+    </div>
   </div>
-  <div class="col jumbotron" style="background-color:white;">
-    <h1 class="header">One Link to Rule them All<span class="accent">!</span></h1>
-    <p>Create one master link, an epic, legendary link to rule all others.</p>
-    <p>
-      <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
-        Get Started
-      </a> 
-    </p>
+</div>
+
+<div class="container hero">
+  <div class="columns">
+    <div class="column">
+      <img src="{% static 'website/svg/cloud.svg' %}" class="img-fluid">
+    </div>
+    <div class="column">
+      <h1 class="header">One Link to Rule them All<span class="accent">!</span></h1>
+      <p>Create one master link, an epic, legendary link to rule all others.</p>
+      <p>
+        <a class="btn btn-outline-primary btn-large has-shadow" href="/register">
+          Get Started
+        </a> 
+      </p>
+    </div>
   </div>
 </div>
 
 <div class="stats">
-<div style="text-align:center;">
-  <h1 class="header">Stats<span class="accent">:</span></h1>
-</div>
+  <div style="text-align:center;">
+    <h1 class="header">Stats<span class="accent">:</span></h1>
+  </div>
 
-<div class="container row align-items-center hero w-100" style="text-align:center;"> 
-  <div class="col stats-col">
-    <div class="card">
-      <div class="card-body">
-        <div class="card-title subheader">Users<span class="accent">:</span></div>
-        <h1 class="header">{{ users }}</h1>
+  <div class="container hero" style="text-align:center;"> 
+    <div class="columns">
+      <div class="column stats-col">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title subheader">Users<span class="accent">:</span></div>
+            <h1 class="header">{{ users }}</h1>
+          </div>
+        </div>
+      </div>
+      <div class="column stats-col">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title subheader">Profiles Viewed<span class="accent">:</span></div>
+            <h1 class="header">{{ views }}</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col stats-col">
-    <div class="card">
-      <div class="card-body">
-        <div class="card-title subheader">Profiles Viewed<span class="accent">:</span></div>
-        <h1 class="header">{{ views }}</h1>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 
 <br><br><br>

@@ -11,10 +11,7 @@
   <meta name="google-site-verification" content="k29Z4qCAT360KHu-tGXWVME44IxFX4drQfwdzCglKTU" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'website/style.css' %}">
@@ -31,36 +28,73 @@
   </title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="main-nav" style="border-bottom:1px solid #eeeeee">
-    <a class="navbar-brand" href="/"><img src="{% static 'website/logo.png' %}" height=25></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar is-fixed-top" id="main-nav" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="{% static 'website/logo.png' %}" width="112" height="28">
+      </a>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="/">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/edit">Edit Page</a>
-          </li>
-        {% endif %}
-      </ul>
-      {% if user.is_authenticated %}
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="nav-link" href="/logout"><button class="btn btn-outline-danger">Logout</button></a></li>
-      </ul>
-      {% else %}
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="nav-link" href="/login"><button class="btn btn-outline-primary">Login</button></a></li>
-        <li><a class="nav-link" href="/register"><button class="btn btn-outline-primary">Register</button></a></li>
-      </ul>
-      {% endif %}
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          {% if user.is_authenticated %}
+          Dashboard
+          {% endif %}
+        </a>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {% if user.is_authenticated %}
+            <a class="button is-danger" href="/logout">
+              Logout
+            </a>
+            {% else %}
+            <a class="button is-primary" href="/register">
+              Sign Up
+            </a>
+            <a class="button is-light" href="/login">
+              Log in
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
   
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+
+    });
+  </script>
+
   <div class="container">
     {% block body %}
 
@@ -76,15 +110,15 @@
   </script>
 
   <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">Made with <i class="fa fa-heart"></i>, <i class="fa fa-coffee"></i>, and open source. <br> <span data-toggle="tooltip" data-placement="top" title="Unless otherwise noted, all content on this website is licensed under the MIT license." style="text-decoration:dashed;">&copy; 2022 Some Rights Reserved</span></p>
+    <footer class="columns is-centered">
+      <p class="column">Made with <i class="fa fa-heart"></i>, <i class="fa fa-coffee"></i>, and open source. <br> <span data-toggle="tooltip" data-placement="top" title="Unless otherwise noted, all content on this website is licensed under the MIT license." style="text-decoration:dashed;">&copy; 2022 Some Rights Reserved</span></p>
   
-      <ul class="nav col-md-4 justify-content-center">
+      <ul class="column is-centered">
         <li class="nav-item"><a class="nav-link px-2 text-muted" href="https://github.com/adamtherookie/linksharin"><i class="fa-brands fa-github"></i></a></li>
         <li class="nav-item"><a class="nav-link px-2 text-muted" href="https://discord.gg/g6ZSJdt8"><i class="fa-brands fa-discord"></i></a></li>
       </ul>
   
-      <ul class="nav col-md-4 justify-content-end">
+      <ul class="nav column">
         <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="/privacy" class="nav-link px-2 text-muted">Privacy Policy</a></li>
         <li class="nav-item"><a href="/terms" class="nav-link px-2 text-muted">Terms of Use</a></li>
