@@ -201,6 +201,7 @@ def edit(request):
         watermark = request.POST.get('checkbox', False)
         image = request.FILES.get("image", None)
         background = request.FILES.get("background", None)
+        remove = request.POST['remove']
         colorscheme = request.POST['colorscheme']
         effect = request.POST['effect']
         font = request.POST['font']
@@ -239,6 +240,10 @@ def edit(request):
         
         if background is not None:
             page.background = background
+            page.save(update_fields=["background"])
+        
+        if remove:
+            page.background = None
             page.save(update_fields=["background"])
 
         page.colorscheme = colorscheme

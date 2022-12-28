@@ -25,9 +25,17 @@
     <input class="form-control" type="file" accept="image/*" name="image" id="image">
     <br>
     <h3 class="gradient header">Change Background Picture<span class="accent">:</span></h3>
-    <h6>Leave empty to do nothing</h6>
+    <h6>Leave empty to do nothing, or check the box to remove one.</h6>
     <hr>
-    <input class="form-control" type="file" accept="image/*" name="background" id="background">
+    <div class="row">
+      <div class="col-8">
+        <input class="form-control" type="file" accept="image/*" name="background" id="background">
+      </div>
+      <div class="col">
+        Remove image? 
+        <input type="checkbox" id="remove" name="remove">
+      </div>
+    </div>
     <div class="row align-items-center">
       <div class="col">
         <h3 class="gradient header">Page Content<span class="accent">:</span></h3>
