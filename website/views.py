@@ -201,7 +201,7 @@ def edit(request):
         watermark = request.POST.get('checkbox', False)
         image = request.FILES.get("image", None)
         background = request.FILES.get("background", None)
-        remove = request.POST['remove']
+        remove = request.POST.get('remove', False)
         colorscheme = request.POST['colorscheme']
         effect = request.POST['effect']
         font = request.POST['font']
