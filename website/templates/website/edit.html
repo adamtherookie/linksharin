@@ -13,92 +13,153 @@
 <div class="has-shadow" style="border:1px solid #eeeeee; padding:20px; border-radius:7px;">
   <form action="/edit" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <h3 class="gradient header">Bio<span class="accent">:</span></h3>
-    <hr>
-    <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
-{{ bio }}
-    </textarea>
-    <br>
-    <h3 class="gradient header">Change Profile Picture<span class="accent">:</span></h3>
-    <h6>Leave empty to do nothing</h6>
-    <hr>
-    <input class="form-control" type="file" accept="image/*" name="image" id="image">
-    <br>
-    <h3 class="gradient header">Change Background Picture<span class="accent">:</span></h3>
-    <h6>Leave empty to do nothing, or check the box to remove one.</h6>
-    <hr>
-    <div class="row">
-      <div class="col-8">
-        <input class="form-control" type="file" accept="image/*" name="background" id="background">
-      </div>
-      <div class="col">
-        Remove image? 
-        <input type="checkbox" id="remove" name="remove">
-      </div>
-    </div>
-    <div class="row align-items-center">
-      <div class="col">
-        <h3 class="gradient header">Page Content<span class="accent">:</span></h3>
-        <hr>
-        <textarea rows="10" cols="10" class="form-control" id="content" name="content">
-    
-        </textarea>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-outline-primary" onclick="add_cat()">Add Category</button>
-        <button class="btn btn-outline-primary" onclick="add_link()">Add Link</button>
-      </div>
-    </div>
-    <br>
-    <h3 class="gradient header">Color Scheme<span class="accent">:</span></h3>
-    <h6>Choose one here or create your own below.</h6>
-    <hr>
-    <select name="colorscheme" id="colorscheme" class="form-control">
-      {% for colorscheme in colorschemes %}
-        <option id="{{ colorscheme.name|cut:' ' }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
-      {% endfor %}
-    </select>
-    <br>
-    <h3 class="gradient header">Effect<span class="accent">:</span></h3>
-    <h6>Choose an effect here or create one below.</h6>
-    <hr>
-    <select name="effect" id="effect" class="form-control">
-      {% for effect in effects %}
-        <option id="{{ effect.name|cut:' ' }}" value="{{ effect.name }}">{{ effect.name }}</option>
-      {% endfor %}
-    </select>
-    <br>
-    <h3 class="gradient header">Font<span class="accent">:</span></h3>
-    <h6>Choose a font here or create one below.</h6>
-    <hr>
-    <select name="font" id="font" class="form-control">
-      {% for font in fonts %}
-        <option id="{{ font.name|cut:' ' }}" value="{{ font.name }}">{{ font.name }}</option>
-      {% endfor %}
-    </select>
-    <br>
-    <h3 class="gradient header">Page Style<span class="accent">:</span></h3>
-    <h6>You can edit the page using CSS below. Here are the classes used:</h6>
-    <ul>
-      <li>.user-title: the username at the top of the page.</li>
-      <li>.user-bio-container: contains the bio of the user.</li>
-      <li>.user-bio: the actual text of the bio.</li>
-      <li>.category: a container for each category (including links).</li>
-      <li>.category-title: the title of each category.</li>
-      <li>.link-container: contains the links, including backgrounds and text.</li>
-      <li>.page-footer: if the watermark is enabled, the container of the footer.</li>
-      <li>.footer-text: if the watermark is enabled, the actual text of the footer.</li>
-    </ul>
-    <hr>
-    <textarea rows="10" cols="10" class="form-control" id="css" name="css">
-      {{ style }}
-    </textarea>
-    <br>
 
-    <div class="form-group">
-      Enable watermark?
-      <input type="checkbox" id="checkbox" name="checkbox" {% if watermark %} checked {% endif %}>
-    </div>
+    <div id="accordion">
+      <div class="card">
+          <div class="card-header">
+              <a class="card-link"
+                  data-toggle="collapse"
+                  href="#description1">
+                  Content
+              </a>
+          </div>
+          <div id="description1"
+              class="collapse show"
+              data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="gradient header">Bio<span class="accent">:</span></h3>
+                <hr>
+                <textarea rows="5" cols="5" class="form-control" id="bio" name="bio">
+{{ bio }}
+                </textarea>
+                <br>
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h3 class="gradient header">Page Content<span class="accent">:</span></h3>
+                    <hr>
+                    <textarea rows="10" cols="10" class="form-control" id="content" name="content">
+                
+                    </textarea>
+                  </div>
+                  <div class="col-3">
+                    <button class="btn btn-outline-primary" onclick="add_cat()">Add Category</button>
+                    <button class="btn btn-outline-primary" onclick="add_link()">Add Link</button>
+                  </div>
+                </div>
+                <br>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-header">
+              <a class="collapsed card-link"
+                  data-toggle="collapse"
+                  href="#description2">
+                  Images
+              </a>
+          </div>
+          <div id="description2" class="collapse"
+              data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="gradient header">Change Profile Picture<span class="accent">:</span></h3>
+                <h6>Leave empty to do nothing</h6>
+                <hr>
+                <input class="form-control" type="file" accept="image/*" name="image" id="image">
+                <br>
+                <h3 class="gradient header">Change Background Picture<span class="accent">:</span></h3>
+                <h6>Leave empty to do nothing, or check the box to remove one.</h6>
+                <hr>
+                <div class="row">
+                  <div class="col-8">
+                    <input class="form-control" type="file" accept="image/*" name="background" id="background">
+                  </div>
+                  <div class="col">
+                    Remove image? 
+                    <input type="checkbox" id="remove" name="remove">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-header">
+              <a class="collapsed card-link"
+                  data-toggle="collapse"
+                  href="#description3">
+                  Style
+              </a>
+          </div>
+          <div id="description3" class="collapse"
+              data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="gradient header">Color Scheme<span class="accent">:</span></h3>
+                <h6>Choose one here or create your own below.</h6>
+                <hr>
+                <select name="colorscheme" id="colorscheme" class="form-control">
+                  {% for colorscheme in colorschemes %}
+                    <option id="{{ colorscheme.name|cut:' ' }}" value="{{ colorscheme.name }}">{{ colorscheme.name }}</option>
+                  {% endfor %}
+                </select>
+                <br>
+                <h3 class="gradient header">Effect<span class="accent">:</span></h3>
+                <h6>Choose an effect here or create one below.</h6>
+                <hr>
+                <select name="effect" id="effect" class="form-control">
+                  {% for effect in effects %}
+                    <option id="{{ effect.name|cut:' ' }}" value="{{ effect.name }}">{{ effect.name }}</option>
+                  {% endfor %}
+                </select>
+                <br>
+                <h3 class="gradient header">Font<span class="accent">:</span></h3>
+                <h6>Choose a font here or create one below.</h6>
+                <hr>
+                <select name="font" id="font" class="form-control">
+                  {% for font in fonts %}
+                    <option id="{{ font.name|cut:' ' }}" value="{{ font.name }}">{{ font.name }}</option>
+                  {% endfor %}
+                </select>
+                <br>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link"
+              data-toggle="collapse"
+              href="#description4">
+              Custom CSS
+          </a>
+          <div id="description4" class="collapse"
+              data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="gradient header">Page Style<span class="accent">:</span></h3>
+                <h6>You can edit the page using CSS below. Here are the classes used:</h6>
+                <ul>
+                  <li>.user-title: the username at the top of the page.</li>
+                  <li>.user-bio-container: contains the bio of the user.</li>
+                  <li>.user-bio: the actual text of the bio.</li>
+                  <li>.category: a container for each category (including links).</li>
+                  <li>.category-title: the title of each category.</li>
+                  <li>.link-container: contains the links, including backgrounds and text.</li>
+                  <li>.page-footer: if the watermark is enabled, the container of the footer.</li>
+                  <li>.footer-text: if the watermark is enabled, the actual text of the footer.</li>
+                </ul>
+                <hr>
+                <textarea rows="10" cols="10" class="form-control" id="css" name="css">
+                  {{ style }}
+                </textarea>
+                <br>
+              </div>
+          </div>
+      </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        Enable watermark?
+        <input type="checkbox" id="checkbox" name="checkbox" {% if watermark %} checked {% endif %}>
+      </div>
+  </div>
 
     <input type="submit" value="Edit" class="btn btn-block btn-outline-primary">
   </form>
