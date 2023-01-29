@@ -159,7 +159,7 @@ def view_page(request, username):
             'font':page.font.replace(" ", "").lower()
         })
     else:
-        return HttpResponse("user not found")
+        return render(request, "website/user404.html")
 
 @login_required
 def edit(request):
