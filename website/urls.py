@@ -12,5 +12,5 @@ urlpatterns = [
     path("privacy", views.privacy, name="privacy"),
     path("terms", views.terms, name="terms"),
     path("faq", views.faq, name="faq"),
-    path("sitemap", views.sitemap, name="sitemap")
+    path("sitemap", views.sitemap, name="sitemap"),
 ]

@@ -36,7 +36,10 @@
 <div class="row">
   <div class="col">
     <h1>QR Code:</h1>
-    {% qr_from_text "https://www.linkshar.in/@/{{ username }}" size="T" image_format="png" error_correction="L" %}  
+    <h6>Click to Download</h6>
+    <a download="linksharin_qr_code.png" href='{% qr_url_from_text "https://www.linkshar.in/@/{{ username }}" size="T" image_format="png" error_correction="L" %}'>
+      <img src='{% qr_url_from_text "https://www.linkshar.in/@/{{ username }}" size="T" image_format="png" error_correction="L" %}'> 
+    </a>
   </div>
 </div>
 

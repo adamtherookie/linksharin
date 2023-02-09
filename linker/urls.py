@@ -20,7 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('website.urls'))
+    path('', include('website.urls')),
+    path('qr_code/', include('qr_code.urls', namespace="qr_code")),
 ]
 
 handler404 = 'website.views.notfound'
