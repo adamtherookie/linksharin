@@ -138,8 +138,8 @@ def view_page(request, username):
             page = None
 
     if page is not None:
-        categories = Category.objects.filter(page=page)
-        links = Link.objects.filter(page=page)
+        categories = Category.objects.filter(page=page, startpage=False)
+        links = Link.objects.filter(page=page, startpage=False)
         style = Style.objects.get(page=page)
 
         view = View(page=page, date=date.today())
@@ -162,6 +162,31 @@ def view_page(request, username):
         return render(request, "website/user404.html")
 
 @login_required
+def startpage(request):
+    page = Page.objects.get(user=request.user)
+
+    if page is not None:
+        categories = Category.objects.filter(page=page, startpage=True)
+        links = Link.objects.filter(page=page, startpage=True)
+        style = Style.objects.get(page=page)
+
+        view = View(page=page, date=date.today())
+        view.save()
+
+        return render(request, "website/startpage.html", {
+            'categories':categories,
+            'links':links,
+            'style':style,
+            'username':request.user,
+            'watermark':page.watermark,
+            'background':page.background,
+            'image':page.pic,
+            'colorscheme':page.colorscheme.replace(" ", "").lower(),
+            'effect':page.effect.replace(" ", "").lower(),
+            'font':page.font.replace(" ", "").lower()
+        })
+
+@login_required
 def edit(request):
     try:
         page = Page.objects.get(user=request.user)
@@ -178,6 +203,9 @@ def edit(request):
     else:
         return HttpResponse("Oops, no page here.")
 
+    startcategories = [category for category in categories if category.startpage == True]
+    startlinks = [link for link in links if link.startpage == True]
+
     if request.method == "GET":
         return render(request, "website/edit.html", {
             'categories':categories,
@@ -192,7 +220,9 @@ def edit(request):
             'user_effect':page.effect,
             'effects':effects,
             'user_font':page.font,
-            'fonts':fonts
+            'fonts':fonts,
+            'startcategories':startcategories,
+            'startlinks':startlinks
         })
     else:
         content = request.POST['content']
@@ -205,6 +235,7 @@ def edit(request):
         colorscheme = request.POST['colorscheme']
         effect = request.POST['effect']
         font = request.POST['font']
+        startcontent = request.POST['startcontent']
 
         if css is not None:
             Style.objects.get(page=page).delete()
@@ -221,11 +252,11 @@ def edit(request):
 
         categories = soup.find_all("h1")
         for category in categories:
-            cat = Category(name=category.text, page=page)
+            cat = Category(name=category.text, page=page, startpage=False)
             cat.save()
 
             for child in category.find_next_sibling().findChildren():
-                link = Link(name=child.text, url=child.get('href'), category=cat, page=page)
+                link = Link(name=child.text, url=child.get('href'), category=cat, page=page, startpage=False)
                 link.save()
         
         page.bio = bio.rstrip()
@@ -254,6 +285,20 @@ def edit(request):
 
         page.font = font
         page.save(update_fields=["font"])
+
+        # Startpage
+        # Parse the md (convert to html first then use beautiful soup to get what we need)
+        html = markdown.markdown(startcontent)
+        soup = BeautifulSoup(html, "html.parser")
+
+        categories = soup.find_all("h1")
+        for category in categories:
+            cat = Category(name=category.text, page=page, startpage=True)
+            cat.save()
+
+            for child in category.find_next_sibling().findChildren():
+                link = Link(name=child.text, url=child.get('href'), category=cat, page=page, startpage=True)
+                link.save()
         
         # I know it's very inefficient to update each field on its own but I'm still debugging :/
 

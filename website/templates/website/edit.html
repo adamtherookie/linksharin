@@ -146,12 +146,32 @@
                 </ul>
                 <hr>
                 <textarea rows="10" cols="10" class="form-control" id="css" name="css">
-                  {{ style }}
+{{ style }}
                 </textarea>
                 <br>
               </div>
           </div>
       </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link"
+              data-toggle="collapse"
+              href="#description5">
+              Start Page
+          </a>
+          <div id="description5" class="collapse"
+              data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="gradient header">Page Content<span class="accent">:</span></h3>
+                <h6>Nobody can see this except for you. Add all your quick-access links here and set this page as the default new tab in your browser.</h6>
+                <hr>
+                <textarea rows="10" cols="10" class="form-control" id="startcontent" name="startcontent">
+
+                </textarea>
+                <br>
+              </div>
+          </div>
       </div>
 
       <br>
@@ -173,6 +193,16 @@ document.addEventListener('DOMContentLoaded', function() {
     {% for link in links %}
       {% if link.category == category %}
         document.querySelector('#content').value += '[{{ link.name }}]({{ link.url }})\n';
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  document.querySelector('#startcontent').value = '';
+  {% for category in startcategories %}
+    document.querySelector('#startcontent').value += '# {{ category.name }}\n';
+    {% for link in startlinks %}
+      {% if link.category == category %}
+        document.querySelector('#startcontent').value += '[{{ link.name }}]({{ link.url }})\n';
       {% endif %}
     {% endfor %}
   {% endfor %}

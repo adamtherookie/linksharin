@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/website/colorschemes/{{ colorscheme }}.css">
+  <link rel="stylesheet" href="/static/website/fonts/{{ font }}.css">
+  <link rel="stylesheet" href="{% static 'website/startpage/default.css' %}">
+  <link rel="icon" type="image/x-icon" href="/media/{{ image }}">
+  <title>{{ username }} {% if watermark == True %} | Linksharin' {% endif %}</title>
+  <style>
+    html {
+      {% if background %}
+        background-color:var(--background);
+        background:url("/media/{{ background }}") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        min-height:100vh;
+      {% else %}
+        background-color:var(--background);
+      {% endif %}
+    }
+    {{ style.css }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-container">
+      <div class="gif">
+              <img class='vapor' src="/media/{{ image }}"/>
+          </div>
+      </div>
+
+      <div class="right-container">
+          <div class="head">
+            <p><span id="username">{{ username }}</span></p>
+          </div>
+
+          <div class="bookmarks">
+            {% for category in categories %}
+              <div class="category">
+                <div class="links">
+                  <li class="title">{{ category.name }}</li>
+                  {% for link in links %}
+                    {% if link.category == category %}
+                      <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+
+  {% if watermark == True %}
+  <div class="page-footer">
+    <a href="/" class="footer-text">Made with Linksharin'</a>
+  </div>
+  {% endif %}
+</body>
+</html>

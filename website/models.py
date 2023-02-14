@@ -20,6 +20,7 @@ class Page(models.Model):
 class Category(models.Model):
   name = models.CharField(max_length=600)
   page = models.ForeignKey(Page, on_delete=models.CASCADE)
+  startpage = models.BooleanField(default=False)
 
   def __str__(self):
     return f"Category {self.name} on page {self.page}"
@@ -29,6 +30,7 @@ class Link(models.Model):
   url = models.CharField(max_length=600)
   category = models.ForeignKey(Category, on_delete=models.CASCADE)
   page = models.ForeignKey(Page, on_delete=models.CASCADE)
+  startpage = models.BooleanField(default=False)
 
   def __str__(self):
     return f"Link with name {self.name} and url {self.url} on {self.category}"
