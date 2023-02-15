@@ -15,6 +15,21 @@
         "design",
         "code"
       ]
+    },
+    {
+      "login": "adamtherookie",
+      "name": "Adam Salhi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56547533?v=4",
+      "profile": "http://www.linkshar.in/@/adamtherookie",
+      "contributions": [
+        "code",
+        "design",
+        "bug",
+        "ideas",
+        "infra",
+        "financial",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
