@@ -1,24 +1,12 @@
 * {
-  transition:0.3s;
-}
-* {
   font-family:var(--font);
   transition:0.3s;
+  color:var(--text-color);
 }
 
 a {
   color:inherit;
   text-decoration:none;
-}
-
-.user-title {
-  font-weight:900;
-  font-size:larger;
-}
-
-.user-bio {
-  font-size:medium;
-  padding:10px;
 }
 
 .category-title {
@@ -49,7 +37,9 @@ a {
 
 .page-footer {
   border-top:1px solid var(--footer-border);
-1  bottom:0;
+  bottom:0;
+  text-align:center;
+  padding:10px;
 }
 
 .footer-text {
