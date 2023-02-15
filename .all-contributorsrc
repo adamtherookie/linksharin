@@ -7,6 +7,21 @@
   "commitConvention": "angular",
   "contributors": [
     {
+      "login": "adamtherookie",
+      "name": "Adam Salhi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56547533?v=4",
+      "profile": "http://www.linkshar.in/@/adamtherookie",
+      "contributions": [
+        "code",
+        "design",
+        "bug",
+        "ideas",
+        "infra",
+        "financial",
+        "maintenance"
+      ]
+    },
+    {
       "login": "Rishav1707",
       "name": "Rishav Raj",
       "avatar_url": "https://avatars.githubusercontent.com/u/97666287?v=4",
