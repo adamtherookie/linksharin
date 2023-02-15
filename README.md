@@ -43,8 +43,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://linktr.ee/rishav.raj"><img src="https://avatars.githubusercontent.com/u/97666287?v=4?s=100" width="100px;" alt="Rishav Raj"/><br /><sub><b>Rishav Raj</b></sub></a><br /><a href="#design-Rishav1707" title="Design">🎨</a> <a href="https://github.com/adamtherookie/linksharin/commits?author=Rishav1707" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.linkshar.in/@/adamtherookie"><img src="https://avatars.githubusercontent.com/u/56547533?v=4?s=100" width="100px;" alt="Adam Salhi"/><br /><sub><b>Adam Salhi</b></sub></a><br /><a href="https://github.com/adamtherookie/linksharin/commits?author=adamtherookie" title="Code">💻</a> <a href="#design-adamtherookie" title="Design">🎨</a> <a href="https://github.com/adamtherookie/linksharin/issues?q=author%3Aadamtherookie" title="Bug reports">🐛</a> <a href="#ideas-adamtherookie" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-adamtherookie" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#financial-adamtherookie" title="Financial">💵</a> <a href="#maintenance-adamtherookie" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://linktr.ee/rishav.raj"><img src="https://avatars.githubusercontent.com/u/97666287?v=4?s=100" width="100px;" alt="Rishav Raj"/><br /><sub><b>Rishav Raj</b></sub></a><br /><a href="#design-Rishav1707" title="Design">🎨</a> <a href="https://github.com/adamtherookie/linksharin/commits?author=Rishav1707" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
