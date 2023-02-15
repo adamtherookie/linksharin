@@ -7,16 +7,6 @@
   "commitConvention": "angular",
   "contributors": [
     {
-      "login": "Rishav1707",
-      "name": "Rishav Raj",
-      "avatar_url": "https://avatars.githubusercontent.com/u/97666287?v=4",
-      "profile": "https://linktr.ee/rishav.raj",
-      "contributions": [
-        "design",
-        "code"
-      ]
-    },
-    {
       "login": "adamtherookie",
       "name": "Adam Salhi",
       "avatar_url": "https://avatars.githubusercontent.com/u/56547533?v=4",
@@ -29,6 +19,16 @@
         "infra",
         "financial",
         "maintenance"
+      ]
+    },
+    {
+      "login": "Rishav1707",
+      "name": "Rishav Raj",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97666287?v=4",
+      "profile": "https://linktr.ee/rishav.raj",
+      "contributions": [
+        "design",
+        "code"
       ]
     }
   ],
