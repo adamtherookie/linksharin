@@ -30,6 +30,16 @@
         "design",
         "code"
       ]
+    },
+    {
+      "login": "segfaultdev",
+      "name": "segfaultdev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72017506?v=4",
+      "profile": "https://github.com/segfaultdev",
+      "contributions": [
+        "design",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
